@@ -19,22 +19,22 @@
 
           <div id="Menu">
               <div id="MenuContent">
-                  <a href="viewCart">
+                  <a href="/cart/viewCart">
                       <img align="middle" name="img_cart" src="../images/cart.gif" />
                   </a>
                   <img align="middle" src="../images/separator.gif" />
-                  <c:if test="${sessionScope.account == null}">
-                      <a href="viewSignon">
+<!--                  <c:if test="${sessionScope.account == null}">-->
+                      <a href="/account/viewSignon" th:if="${account == null}">
                           Sign In
                       </a>
-                  </c:if>
-                  <c:if test="${sessionScope.account != null}">
-                      <a href="signout">
+<!--                  </c:if>-->
+<!--                  <c:if test="${sessionScope.account != null}">-->
+                      <a href="/account/signout" th:if="${account != null}">
                           Sign Out
                       </a>
-                  </c:if>
+<!--                  </c:if>-->
                   <img align="middle" src="../images/separator.gif" />
-                  <a href="viewEditAccount">
+                  <a href="/account/viewEditAccountForm">
                       My Account
                   </a>
                   <img align="middle" src="../images/separator.gif" /> <a href="../help.html">?</a>
@@ -50,23 +50,23 @@
           </div>
 
           <div id="QuickLinks">
-              <a href="viewCategory?categoryId=FISH">
+              <a href="/catalog/viewCategory?categoryId=FISH">
                   <img src="../images/sm_fish.gif" />
               </a>
               <img src="../images/separator.gif" />
-              <a href="viewCategory?categoryId=DOGS">
+              <a href="/catalog/viewCategory?categoryId=DOGS">
                   <img src="../images/sm_dogs.gif" />
               </a>
               <img src="../images/separator.gif" />
-              <a href="viewCategory?categoryId=REPTILES">
+              <a href="/catalog/viewCategory?categoryId=REPTILES">
                   <img src="../images/sm_reptiles.gif" />
               </a>
               <img src="../images/separator.gif" />
-              <a href="viewCategory?categoryId=CATS">
+              <a href="/catalog/viewCategory?categoryId=CATS">
                   <img src="../images/sm_cats.gif" />
               </a>
               <img src="../images/separator.gif" />
-              <a href="viewCategory?categoryId=BIRDS">
+              <a href="/catalog/viewCategory?categoryId=BIRDS">
                   <img src="../images/sm_birds.gif" />
               </a>
           </div>

@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="StyleSheet" href="../css/jpetstore.css" type="text/css" media="screen"/>
+</head>
+<body>
+<div th:replace="/common/top"></div>
+<div id="Content">
+
+<!--    <c:if test="${sessionScope.errormsg != null}">-->
+        <ul class="messages" th:if="${errormsg != null}">
+            <li th:text="${errormsg}">sessionScope.errormsg</li>
+        </ul>
+<!--    </c:if>-->
+
+    <div id="Catalog">
+        <form action="/account/signon" method="post">
+
+            <p>Please enter your username and password.</p>
+
+            <table>
+                <tr>
+                    <td id="username">Username:</td>
+                    <td><input type="text" name="username"></td>
+                    <td></td>
+                </tr>
+                <tr>
+                    <td>Password:</td>
+                    <td><input type="password" name="password"></td>
+                    <td></td>
+                </tr>&nbsp;
+                <tr>
+                    <td>Check code:</td>
+                    <td><input id="code" name="verificationCode" type="text"></td>
+                    <td><img  id="imgId" alt="verificationCode" src="verificationCode" οnclick="changeCode()" align="center"></td>
+                </tr>
+
+            </table>
+            <input type="submit" name="signon" value="Login">
+        </form>
+
+        Need a user name and password?
+        <a href="/account/newAccountForm" >Register Now!</a>
+    </div>
+
+    <script type="text/javascript">
+        function changeCode(){
+            var img = document.getElementById("imgId");
+            //img.src = "/Checkcode/checkcode?time="+new Date().getTime();
+        }
+    </script>
+
+
+</div>
+<div th:replace="/common/bottom"></div>
+
+</body>
+</html>

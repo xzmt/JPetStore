@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="org.csu.mypetstore.persistence.CartMapper">
+
+
+    <insert id="addCart" parameterType="CartDb">
+    INSERT INTO CART (USERID,ITEMID, PRODUCTID, NAME, INSTOCK, QUANTITY,LISTPRICE,TOTAL) VALUES (#{userId},#{itemId}, #{productId}, #{name}, #{inStock}, #{quantity}, #{listPrice}, #{total})
+    </insert>
+    <delete id="removeCartByItemId" parameterType="string">
+      DELETE FROM CART WHERE USERID = #{userId} AND ITEMID = #{itemId}
+    </delete>
+    <delete id="removeCart" parameterType="string">
+     DELETE FROM CART WHERE USERID = #{userId}
+    </delete>
+    <update id="incrementQuantityByItemId" parameterType="string">
+     UPDATE CART SET QUANTITY = QUANTITY + 1,TOTAL=LISTPRICE*QUANTITY  WHERE USERID = #{userId} AND ITEMID = #{itemId}
+    </update>
+    <select id="getSubTotal" parameterType="string" resultType="decimal">
+      SELECT SUM(TOTAL) AS TOTAL FROM CART WHERE USERID = #{userId}
+     </select>
+    <select id="getCartList" parameterType="string" resultType="CartDb">
+      SELECT USERID,ITEMID, PRODUCTID, NAME, INSTOCK, QUANTITY,LISTPRICE,TOTAL FROM CART WHERE USERID = #{userId}
+    </select>
+    <select id="containsItemId" parameterType="string" resultType="Boolean">
+      SELECT count(ITEMID) FROM CART WHERE USERID = #{userId} AND ITEMID = #{itemId}
+    </select>
+    <update id="updateCart" parameterType="CartDb">
+     UPDATE CART SET QUANTITY = #{quantity},TOTAL=LISTPRICE*QUANTITY  WHERE USERID = #{userId} AND  ITEMID = #{itemId}
+    </update>
+
+</mapper>
