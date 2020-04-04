@@ -9,10 +9,15 @@ import org.springframework.ui.Model;
 import org.springframework.ui.ModelExtensionsKt;
 import org.springframework.web.bind.annotation.*;
 
+import java.io.IOException;
+import java.io.PrintWriter;
 import java.util.Collections;
 
 import java.util.ArrayList;
 import java.util.List;
+
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 
 @Controller
 @RequestMapping("/account")
@@ -110,6 +115,32 @@ public class AccountController {
     {
         accountService.updateAccount(account);
         return "catalog/main";
+    }
+
+    @RequestMapping("/usernameIsExist")
+    public void usernameIsExist(Account account ,Model model,HttpServletRequest request,HttpServletResponse response) throws IOException {
+        String username = request.getParameter("username");
+//        System.out.println("username is "+username);
+//        Account account = new Account();
+//        account.setUsername(username);
+//        AccountService accountService = new AccountService();
+
+        response.setContentType("text/xml");
+        PrintWriter out = response.getWriter();
+
+//        System.out.println("accountService.getAccount(username) is "+accountService.getAccount(username));
+        System.out.println("成功了");
+        System.out.println(username);
+        if (accountService.getAccount(username)!= null)
+        {
+            out.println("<msg>Exist</msg>");
+        }
+        else
+        {
+            out.println("<msg>NotExist</msg>");
+        }
+        out.flush();
+        out.close();
     }
 //    public Resolution newAccount() {
 //        accountService.insertAccount(account);
