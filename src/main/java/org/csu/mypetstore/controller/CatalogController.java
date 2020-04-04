@@ -59,4 +59,11 @@ public class CatalogController {
         model.addAttribute("product",product);
         return "catalog/Item";
     }
+
+    @GetMapping("/searchProduct")
+    public String searchProduct(String keyword,Model model){
+        List<Product> productList = catalogService.searchProductList(keyword);
+        model.addAttribute("productList",productList);
+        return "catalog/SearchProducts";
+    }
 }
