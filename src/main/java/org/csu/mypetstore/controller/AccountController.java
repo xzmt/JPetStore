@@ -1,5 +1,7 @@
 package org.csu.mypetstore.controller;
 
+import cn.hutool.captcha.CaptchaUtil;
+import cn.hutool.captcha.CircleCaptcha;
 import org.csu.mypetstore.domain.Account;
 import org.csu.mypetstore.service.AccountService;
 import org.csu.mypetstore.service.CatalogService;
@@ -9,6 +11,11 @@ import org.springframework.ui.Model;
 import org.springframework.ui.ModelExtensionsKt;
 import org.springframework.web.bind.annotation.*;
 
+import javax.imageio.ImageIO;
+import javax.servlet.ServletOutputStream;
+import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
+import java.awt.image.BufferedImage;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.Collections;
@@ -195,5 +202,42 @@ public class AccountController {
 //    public boolean isAuthenticated() {
 //        return authenticated && account != null && account.getUsername() != null;
 //    }
+    @RequestMapping("/getVerificationCode")
+    public void getVerificationCode(HttpSession session, HttpServletResponse response, Integer count)
+    {
+
+        //定义图形验证码的长和宽  码值个数  干扰圈数
+        CircleCaptcha circleCaptcha = CaptchaUtil.createCircleCaptcha(90, 40, 4, 10);
+        BufferedImage codeImg = circleCaptcha.getImage();
+
+        if (null != count && count > 0)
+        {
+            //重新生成验证码
+            circleCaptcha.createCode();
+        }
+        String Code = circleCaptcha.getCode();
+        if (session.getAttribute("verificationCode") != null)
+        {
+            session.removeAttribute("verificationCode");
+            session.setAttribute("verificationCode", Code);
+        }
+        else
+        {
+            session.setAttribute("verificationCode", Code);
+        }
+        System.out.println(Code);
+        ServletOutputStream sos;
+        try
+        {
+            sos = response.getOutputStream();
+            ImageIO.write(codeImg, "jpeg", sos);
+            sos.close();
+        }
+        catch (IOException e)
+        {
+            // TODO Auto-generated catch block
+            e.printStackTrace();
+        }
+    }
 
 }

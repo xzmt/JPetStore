@@ -12,32 +12,38 @@ import org.springframework.stereotype.Service;
 import java.util.List;
 
 @Service
-public class CatalogService {
+public class CatalogService
+{
     @Autowired
     private CategoryMapper categoryMapper;
     @Autowired
     private ItemMapper itemMapper;
-   @Autowired
-   private ProductMapper productMapper;
+    @Autowired
+    private ProductMapper productMapper;
 
-    public List<Category> getCategoryList() {
+    public List<Category> getCategoryList()
+    {
         return categoryMapper.getCategoryList();
     }
 
-    public Category getCategory(String categoryId) {
+    public Category getCategory(String categoryId)
+    {
         return categoryMapper.getCategory(categoryId);
     }
 
-    public Product getProduct(String productId) {
+    public Product getProduct(String productId)
+    {
         return productMapper.getProduct(productId);
     }
 
-    public List<Product> getProductListByCategory(String categoryId) {
+    public List<Product> getProductListByCategory(String categoryId)
+    {
         return productMapper.getProductListByCategory(categoryId);
     }
 
     // TODO enable using more than one keyword
-    public List<Product> searchProductList(String keyword) {
+    public List<Product> searchProductList(String keyword)
+    {
         return productMapper.searchProductList("%" + keyword.toLowerCase() + "%");
     }
 
@@ -45,15 +51,19 @@ public class CatalogService {
     {
         return productMapper.searchAllProductList(username);
     }
-    public List<Item> getItemListByProduct(String productId) {
+
+    public List<Item> getItemListByProduct(String productId)
+    {
         return itemMapper.getItemListByProduct(productId);
     }
 
-    public Item getItem(String itemId) {
+    public Item getItem(String itemId)
+    {
         return itemMapper.getItem(itemId);
     }
 
-    public boolean isItemInStock(String itemId) {
+    public boolean isItemInStock(String itemId)
+    {
         return itemMapper.getInventoryQuantity(itemId) > 0;
     }
 }
