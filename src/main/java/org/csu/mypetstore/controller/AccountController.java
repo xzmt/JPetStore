@@ -16,7 +16,7 @@ import java.util.List;
 
 @Controller
 @RequestMapping("/account")
-@SessionAttributes(value = {"account" ,"cartList"})
+@SessionAttributes(value = {"account" ,"cartList","cart","order"})
 public class AccountController {
     private static final List<String> LANGUAGE_LIST;
     private static final List<String> CATEGORY_LIST;
