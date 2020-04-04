@@ -12,6 +12,8 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 import java.util.List;
 
 @Controller
@@ -108,5 +110,30 @@ public class CartController {
         model.addAttribute("cartListSize",cartListSize);
 
         return "cart/cart";
+    }
+
+    @RequestMapping("/ajaxUpdate")
+    public void ajaxUpdateServlet(HttpServletRequest request, HttpServletResponse response)
+    {
+        System.out.println("成功了呀");
+//        CartService cartService=new CartService();
+        HttpSession session = request.getSession();
+        String userId = ((Account)session.getAttribute("account")).getUsername();
+
+        //从session值为cartList中获取购物车信息，此时"cartList"中购物车的数量不是最新的，但商品行数没变化
+        List<CartDb> cartDbList = (List<CartDb>)session.getAttribute("cartList");
+
+        for (int i=0;i<cartDbList.size();i++)
+        {
+            int quantity = Integer.parseInt(request.getParameter("count"));
+            cartService.updateCart(userId,cartDbList.get(i).getItemId(),quantity);
+        }
+        List<CartDb> cartListNew = cartService.getCartList(userId);
+        Integer cartListSize=cartListNew.size();
+
+        //将结果存到session中，cartList存放购物车数据集，cartListSize存放购物车总行数
+
+        session.setAttribute("cartList",cartListNew);
+        session.setAttribute("cartListSize",cartListSize);
     }
 }
