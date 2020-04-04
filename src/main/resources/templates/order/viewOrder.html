@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="StyleSheet" href="../css/jpetstore.css" type="text/css" media="screen"/>
+</head>
+<body>
+<div th:replace="/common/top"></div>
+<div id="Content">
+
+    <div id="BackLink">
+        <a href="/catalog/view">Return to Main Menu</a>
+    </div>
+
+    <div id="Catalog">
+
+        <table>
+            <tr>
+                <th align="center" colspan="2">Order <p th:text="${order.orderId}">order.orderId</p>
+                    <b th:text="${#dates.format(order.orderDate,'yyyy-MM-dd HH:mm:ss')}"></b>
+                </th>
+            </tr>
+
+            <tr>
+                <th colspan="2">Payment Details</th>
+            </tr>
+            <tr>
+                <td>Card Type:</td>
+                <td th:text="${order.cardType}"></td>
+            </tr>
+            <tr>
+                <td>Card Number:</td>
+                <td th:text="${order.creditCard} + '* Fake
+                    number!'"> </td>
+            </tr>
+            <tr>
+                <td>Expiry Date (MM/YYYY):</td>
+                <td th:text="${order.expiryDate}"></td>
+            </tr>
+            <tr>
+                <th colspan="2">Billing Address</th>
+            </tr>
+            <tr>
+                <td>First name:</td>
+                <td th:text="${order.billToFirstName}"></td>
+            </tr>
+            <tr>
+                <td>Last name:</td>
+                <td th:text="${order.billToLastName}"></td>
+            </tr>
+            <tr>
+                <td>Address 1:</td>
+                <td th:text="${order.billAddress1}"></td>
+            </tr>
+            <tr>
+                <td>Address 2:</td>
+                <td th:text="${order.billAddress2}"></td>
+            </tr>
+            <tr>
+                <td>City:</td>
+                <td th:text="${order.billCity}"></td>
+            </tr>
+            <tr>
+                <td>State:</td>
+                <td th:text="${order.billState}"></td>
+            </tr>
+            <tr>
+                <td>Zip:</td>
+                <td th:text="${order.billZip}"></td>
+            </tr>
+            <tr>
+                <td>Country:</td>
+                <td th:text="${order.billCountry}"></td>
+            </tr>
+            <tr>
+                <th colspan="2">Shipping Address</th>
+            </tr>
+            <tr>
+                <td>First name:</td>
+                <td th:text="${order.shipToFirstName}"></td>
+            </tr>
+            <tr>
+                <td>Last name:</td>
+                <td th:text="${order.shipToLastName}"></td>
+            </tr>
+            <tr>
+                <td>Address 1:</td>
+                <td th:text="${order.shipAddress1}"></td>
+            </tr>
+            <tr>
+                <td>Address 2:</td>
+                <td th:text="${order.shipAddress2}"></td>
+            </tr>
+            <tr>
+                <td>City:</td>
+                <td th:text="${order.shipCity}"></td>
+            </tr>
+            <tr>
+                <td>State:</td>
+                <td th:text="${order.shipState}"></td>
+            </tr>
+            <tr>
+                <td>Zip:</td>
+                <td th:text="${order.shipZip}"></td>
+            </tr>
+            <tr>
+                <td>Country:</td>
+                <td th:text="${order.shipCountry}"></td>
+            </tr>
+            <tr>
+                <td>Courier: </td>
+                <td th:text="${order.courier}"></td>
+            </tr>
+            <tr>
+<!--                <%&#45;&#45;<td colspan="2">Status: <c:out value="${sessionScope.order.status}" /></td>&#45;&#45;%>-->
+                <td>Status: </td>
+                <td>P</td>
+            </tr>
+            <tr>
+                <td colspan="2">
+
+                    <table>
+                        <tr>
+                            <th>Item ID</th>
+                            <th>Description</th>
+                            <th>Quantity</th>
+                            <th>Price</th>
+                            <th>Total Cost</th>
+                        </tr>
+<!--                        <c:forEach var="lineItem" items="${sessionScope.order.lineItems}">-->
+                            <tr th:each="lineItem:${order.lineItems}">
+                                <td>
+                                    <a th:href="@{'/catalog/viewItem?itemId=' + ${lineItem.itemId}}" th:text="${lineItem.itemId}"></a>
+                                </td>
+
+                                <td th:text="${lineItem.name}">lineItem.name</td>
+
+                                <td th:text="${lineItem.quantity}">lineItem.quantity</td>
+
+                                <td th:text= "${'$' +#numbers.formatDecimal(lineItem.unitPrice,0,'COMMA',2,'POINT')}">
+
+                                </td>
+
+                                <td th:text= "${'$' +#numbers.formatDecimal(lineItem.total,0,'COMMA',2,'POINT')}">
+
+                                </td>
+                            </tr>
+                        </c:forEach>
+                        <tr>
+                            <th colspan="5">Total: <p th:text= "${'$' +#numbers.formatDecimal(order.totalPrice,0,'COMMA',2,'POINT')}"></p>
+                            </th>
+                        </tr>
+                    </table>
+                </td>
+            </tr>
+        </table>
+    </div>
+</div>
+<div th:replace="/common/bottom"></div>
+
+</body>
+</html>
