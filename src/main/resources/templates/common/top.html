@@ -26,6 +26,81 @@
             })
         } );
     </script>
+
+    <script>
+        function fun(data1) {
+            console.log("fun()");
+            $.ajax({
+                url : "/cart/ajaxUpdate",
+                type: "post",
+                data:
+                    {
+                        count:data1.value,
+                    },
+                success : function(data) {   //如果请求成功，返回数据。
+                    var newContent = '';
+                    var newCount = '$' + (parseFloat(data1.parentNode.nextSibling.nextSibling.innerText.substr(1)) * parseInt(data1.value)).toFixed(2);
+                    newContent += newCount;
+                    data1.parentNode.nextSibling.nextSibling.nextSibling.nextSibling.innerHTML= newContent;
+                }});
+
+        // <%--$("input[name=\"${cartItem.item.itemId}\"]").parent().next().next().value = $("input[name=\"${cartItem.item.itemId}\"]").value * ${cartItem.item.listPrice};--%>
+
+        }
+    </script>
+    <script language="javascript" type="text/javascript">
+        function showDiv(open,descrip,event)
+        {
+            $.ajax({
+                url : "/catalog/ajaxWindow",
+                type: "post",
+                data:
+                    {
+                        description:descrip,
+                    },
+                success : function(data) {   //如果请求成功，返回数据。
+                    var e = event || window.event;
+                    var showDiv = document.getElementById('showDiv');
+                    var x = (e.pageX - 800) + 'px';
+                    var y = (e.pageY - 400) + 'px';
+                    console.log(x);
+                    showDiv.style.left = x;
+                    showDiv.style.top = y;
+                    showDiv.style.border = '1px solid #F90';
+                    showDiv.style.background = '#E3EDCD';
+                    showDiv.style.position = 'absolute';
+                    showDiv.style.width = '40%';
+                    showDiv.style.zIndex = '9999';
+                    showDiv.style.display = 'block';
+                    showDiv.innerHTML = data;
+                }});
+
+
+            // document.getElementById("area").style.display=open?"":"none";
+        }
+        function hideDiv()
+        {            document.getElementById("showDiv").style.display="none";
+        }
+
+        function mouseMove(e)
+        {
+
+            var o = document.getElementById("area");
+            o.style.left = mousePos(e).x-170;
+            o.style.top = mousePos(e).y;
+        }
+
+        function mousePos(e)
+        {
+            var x,y;
+            var e = e||window.event;
+            return
+            {
+                // x:e.clientX+document.body.scrollLeft+document.documentElement.scrollLeft,
+                //     y:e.clientY+document.body.scrollTop+document.documentElement.scrollTop
+            };
+        };
+    </script>
 </head>
 <body>
       <header th:fragment="header">
