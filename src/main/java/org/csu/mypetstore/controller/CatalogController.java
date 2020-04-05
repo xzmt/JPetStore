@@ -109,6 +109,16 @@ public class CatalogController {
         }
         return null;
     }
+
+    @GetMapping("searchProduct")
+    public String searchProduct(String keyword, Model model)
+    {
+        List<Product> productList = catalogService.searchProductList(keyword);
+        model.addAttribute("productList", productList);
+        return "catalog/SearchProducts";
+    }
+
+
     @RequestMapping("/ajaxWindow")
     public void ajaxWindow(HttpServletRequest request, HttpServletResponse response) throws IOException {
         String categoryId = request.getParameter("description");
