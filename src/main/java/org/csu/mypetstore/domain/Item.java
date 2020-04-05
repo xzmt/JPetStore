@@ -23,11 +23,13 @@ public class Item implements Serializable {
     private String descn;
     private int stocknum;
 
-    public int getStocknum() {
+    public int getStocknum()
+    {
         return stocknum;
     }
 
-    public void setStocknum(int stocknum) {
+    public void setStocknum(int stocknum)
+    {
         this.stocknum = stocknum;
     }
 
