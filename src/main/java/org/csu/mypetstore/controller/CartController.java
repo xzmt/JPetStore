@@ -18,7 +18,7 @@ import java.util.List;
 
 @Controller
 @RequestMapping("/cart")
-@SessionAttributes(value = {"account" ,"cartList","cart","order"})
+@SessionAttributes(value = {"account" ,"cartList","cart","order","cartListSize"})
 public class CartController {
     @Autowired
     private CatalogService catalogService;
@@ -116,7 +116,7 @@ public class CartController {
     @RequestMapping("/ajaxUpdate")
     public void ajaxUpdateServlet(HttpServletRequest request, HttpServletResponse response)
     {
-        System.out.println("成功了呀");
+//        System.out.println("成功了呀");
 //        CartService cartService=new CartService();
         HttpSession session = request.getSession();
         String userId = ((Account)session.getAttribute("account")).getUsername();

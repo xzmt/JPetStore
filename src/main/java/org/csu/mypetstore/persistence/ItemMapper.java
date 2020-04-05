@@ -1,5 +1,6 @@
 package org.csu.mypetstore.persistence;
 
+import org.apache.ibatis.annotations.Param;
 import org.csu.mypetstore.domain.Item;
 import org.springframework.stereotype.Repository;
 

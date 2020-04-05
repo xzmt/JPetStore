@@ -21,7 +21,7 @@ import java.util.List;
 
 @Controller
 @RequestMapping("/catalog")
-@SessionAttributes(value = {"account" ,"cartList","order","cast"})
+@SessionAttributes(value = {"account" ,"cartList","order","cast","cartListSize"})
 public class CatalogController {
     @Autowired
     private CatalogService catalogService;

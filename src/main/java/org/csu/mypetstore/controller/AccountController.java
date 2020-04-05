@@ -28,7 +28,7 @@ import javax.servlet.http.HttpServletResponse;
 
 @Controller
 @RequestMapping("/account")
-@SessionAttributes(value = {"account" ,"cartList","cart","order"})
+@SessionAttributes(value = {"account" ,"cartList","cart","order","cartListSize"})
 public class AccountController {
     private static final List<String> LANGUAGE_LIST;
     private static final List<String> CATEGORY_LIST;
@@ -136,8 +136,8 @@ public class AccountController {
         PrintWriter out = response.getWriter();
 
 //        System.out.println("accountService.getAccount(username) is "+accountService.getAccount(username));
-        System.out.println("成功了");
-        System.out.println(username);
+//        System.out.println("成功了");
+//        System.out.println(username);
         if (accountService.getAccount(username)!= null)
         {
             out.println("<msg>Exist</msg>");
@@ -225,7 +225,7 @@ public class AccountController {
         {
             session.setAttribute("verificationCode", Code);
         }
-        System.out.println(Code);
+//        System.out.println(Code);
         ServletOutputStream sos;
         try
         {
