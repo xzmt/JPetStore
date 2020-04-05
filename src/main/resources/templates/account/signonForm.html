@@ -35,7 +35,7 @@
                 <tr>
                     <td>Check code:</td>
                     <td><input id="code" name="verificationCode" type="text"></td>
-                    <td><img  id="imgId" alt="verificationCode" src="verificationCode" οnclick="changeCode()" align="center"></td>
+                    <td><img src="/account/getVerificationCode?count=0" id="verificationCode" name="verificationCode" onclick="changeCodeImg(this)"></td>
                 </tr>
 
             </table>
@@ -47,9 +47,8 @@
     </div>
 
     <script type="text/javascript">
-        function changeCode(){
-            var img = document.getElementById("imgId");
-            //img.src = "/Checkcode/checkcode?time="+new Date().getTime();
+        function changeCodeImg(){
+            $("#verificationCode").src = "/register/getAuthCodeImg?count=1&timestamp="+new Date().getTime();
         }
     </script>
 
