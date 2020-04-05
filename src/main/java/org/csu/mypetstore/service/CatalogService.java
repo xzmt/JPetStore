@@ -66,4 +66,10 @@ public class CatalogService
     {
         return itemMapper.getInventoryQuantity(itemId) > 0;
     }
+
+    public int getStockNumByItemId(String itemId){return itemMapper.getStockNumByItemId(itemId);}
+
+    public int updateStockNum(String itemId,int stockNum){itemMapper.updateStockNum(itemId,stockNum); return 1;}
+
+    public List<Item> getAllItem(){return itemMapper.getAllItem();}
 }

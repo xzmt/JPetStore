@@ -62,4 +62,24 @@
     WHERE ITEMID = #{itemId}
   </update>
 
+  <select id="getStockNumByItemId" parameterType="string" resultType="int">
+    select
+      I.stocknum
+    from ITEM I, INVENTORY V, PRODUCT P
+    where P.PRODUCTID = I.PRODUCTID
+      and I.ITEMID = V.ITEMID
+      and I.ITEMID = #{value}
+  </select>
+
+  <update id="updateStockNum" parameterType="Item">
+    UPDATE ITEM SET
+      stocknum = #{stocknum}
+    WHERE ITEMID = #{itemId}
+  </update>
+
+  <select id="getAllItem"  resultType="Item">
+    select *
+    from ITEM
+  </select>
+
 </mapper>

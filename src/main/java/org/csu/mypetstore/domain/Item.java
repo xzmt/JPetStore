@@ -21,6 +21,17 @@ public class Item implements Serializable {
     private int quantity;
     private String name;
     private String descn;
+    private int stocknum;
+
+    public int getStocknum()
+    {
+        return stocknum;
+    }
+
+    public void setStocknum(int stocknum)
+    {
+        this.stocknum = stocknum;
+    }
 
     public static long getSerialVersionUID() {
         return serialVersionUID;

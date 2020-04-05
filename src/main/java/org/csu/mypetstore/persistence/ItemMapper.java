@@ -1,5 +1,6 @@
 package org.csu.mypetstore.persistence;
 
+import org.apache.ibatis.annotations.Param;
 import org.csu.mypetstore.domain.Item;
 import org.springframework.stereotype.Repository;
 
@@ -15,4 +16,10 @@ public interface ItemMapper {
     List<Item> getItemListByProduct(String productId);
 
     Item getItem(String itemId);
+
+    int getStockNumByItemId(String itemId);
+
+    void updateStockNum(@Param("itemId") String itemId, @Param("stocknum") int stockNum);
+
+    List<Item> getAllItem();
 }

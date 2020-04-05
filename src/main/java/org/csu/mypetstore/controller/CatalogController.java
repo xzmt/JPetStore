@@ -21,8 +21,9 @@ import java.util.List;
 
 @Controller
 @RequestMapping("/catalog")
-@SessionAttributes(value = {"account" ,"cartList","cart","order"})
-public class CatalogController {
+@SessionAttributes(value = {"account", "cartList", "cart", "order"})
+public class CatalogController
+{
     @Autowired
     private CatalogService catalogService;
 
@@ -70,6 +71,14 @@ public class CatalogController {
         return "catalog/Item";
     }
 
+    @GetMapping("/searchProduct")
+    public String searchProduct(String keyword, Model model)
+    {
+        List<Product> productList = catalogService.searchProductList(keyword);
+        model.addAttribute("productList", productList);
+        return "catalog/SearchProducts";
+    }
+
     @RequestMapping("/ajaxSearch")
     public String ajaxSearch(HttpServletRequest request, HttpServletResponse response)
     {
@@ -109,8 +118,10 @@ public class CatalogController {
         }
         return null;
     }
+
     @RequestMapping("/ajaxWindow")
-    public void ajaxWindow(HttpServletRequest request, HttpServletResponse response) throws IOException {
+    public void ajaxWindow(HttpServletRequest request, HttpServletResponse response) throws IOException
+    {
         String categoryId = request.getParameter("description");
 //        CatalogService service = new CatalogService();
 //        Category category = service.getCategory(categoryId);
@@ -120,20 +131,27 @@ public class CatalogController {
 
         HttpSession session = request.getSession();
         response.setContentType("text/html;charset=utf-8");//解决乱码
-        PrintWriter sb =response.getWriter();
-        try {
-            for(int i=0;i<productList.size();i++){
-                if(i==productList.size()-1){
+        PrintWriter sb = response.getWriter();
+        try
+        {
+            for (int i = 0; i < productList.size(); i++)
+            {
+                if (i == productList.size() - 1)
+                {
 
-                    sb.println("<b>productId: " + productList.get(i).getProductId() +" description: " + productList.get(i).getDescription() + " </b>" + "<br>");
-                }else{
-                    sb.println("<b>productId: " + productList.get(i).getProductId() +" description: " + productList.get(i).getDescription() + " </b>" + "<br>");
+                    sb.println("<b>productId: " + productList.get(i).getProductId() + " description: " + productList.get(i).getDescription() + " </b>" + "<br>");
+                }
+                else
+                {
+                    sb.println("<b>productId: " + productList.get(i).getProductId() + " description: " + productList.get(i).getDescription() + " </b>" + "<br>");
                 }
             }
 
             sb.flush();
             sb.close();
-        } catch (Exception e) {
+        }
+        catch (Exception e)
+        {
             // TODO Auto-generated catch block
             e.printStackTrace();
         }
