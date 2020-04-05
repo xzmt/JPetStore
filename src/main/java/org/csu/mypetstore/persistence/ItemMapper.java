@@ -16,5 +16,9 @@ public interface ItemMapper {
 
     Item getItem(String itemId);
 
+    int getStockNumByItemId(String itemId);
 
+    void updateStockNum(@Param("itemId") String itemId, @Param("stocknum") int stockNum);
+
+    List<Item> getAllItem();
 }

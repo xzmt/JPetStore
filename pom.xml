@@ -49,11 +49,13 @@
                 </exclusion>
             </exclusions>
         </dependency>
+        <!-- https://mvnrepository.com/artifact/cn.hutool/hutool-all -->
         <dependency>
             <groupId>cn.hutool</groupId>
             <artifactId>hutool-all</artifactId>
-            <version>4.4.5</version>
+            <version>5.2.5</version>
         </dependency>
+
     </dependencies>
 
     <build>

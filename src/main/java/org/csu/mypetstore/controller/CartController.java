@@ -98,6 +98,7 @@ public class CartController {
         List<CartDb> cartDbList = (List<CartDb>) model.getAttribute("cartList");
         for (int i=0;i<cartDbList.size();i++)
         {
+            
             int quantity= Integer.parseInt(httpServletRequest.getParameter(cartDbList.get(i).getItemId()));
             cartService.updateCart(userId,cartDbList.get(i).getItemId(),quantity);
         }
@@ -122,6 +123,7 @@ public class CartController {
 
         //从session值为cartList中获取购物车信息，此时"cartList"中购物车的数量不是最新的，但商品行数没变化
         List<CartDb> cartDbList = (List<CartDb>)session.getAttribute("cartList");
+
 
         for (int i=0;i<cartDbList.size();i++)
         {
