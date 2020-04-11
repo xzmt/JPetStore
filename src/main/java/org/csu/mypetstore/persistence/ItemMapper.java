@@ -8,7 +8,8 @@ import java.util.List;
 import java.util.Map;
 
 @Repository
-public interface ItemMapper {
+public interface ItemMapper
+{
     void updateInventoryQuantity(Map<String, Object> param);
 
     int getInventoryQuantity(String itemId);
@@ -22,4 +23,10 @@ public interface ItemMapper {
     void updateStockNum(@Param("itemId") String itemId, @Param("stocknum") int stockNum);
 
     List<Item> getAllItem();
+
+    void insertItem(Item item);
+
+    void updateItem(Item item);
+
+    void deleteItem(String itemId);
 }
