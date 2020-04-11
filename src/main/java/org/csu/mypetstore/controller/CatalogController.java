@@ -21,7 +21,7 @@ import java.util.List;
 
 @Controller
 @RequestMapping("/catalog")
-@SessionAttributes(value = {"account" ,"cartList","cart","order"})
+@SessionAttributes(value = {"account" ,"cartList","order","cast","cartListSize"})
 public class CatalogController {
     @Autowired
     private CatalogService catalogService;
@@ -33,14 +33,13 @@ public class CatalogController {
     }
 
     @GetMapping("/viewCategory")
-    public String viewCategory(String categoryId, Model model)
+    public String viewCategory(String categoryId , Model model)
     {
-        if (categoryId != null)
-        {
+        if (categoryId != null) {
             List<Product> productList = catalogService.getProductListByCategory(categoryId);
             Category category = catalogService.getCategory(categoryId);
-            model.addAttribute("category", category);
-            model.addAttribute("productList", productList);
+            model.addAttribute("category" ,category);
+            model.addAttribute("productList",productList);
             return "catalog/category";
         }
 
@@ -48,25 +47,22 @@ public class CatalogController {
     }
 
     @GetMapping("/viewProduct")
-    public String viewProduct(String productId, Model model)
-    {
-        if (productId != null)
-        {
-            List<Item> itemList = catalogService.getItemListByProduct(productId);
+    public String viewProduct(String productId , Model model) {
+        if (productId != null) {
+            List<Item>itemList = catalogService.getItemListByProduct(productId);
             Product product = catalogService.getProduct(productId);
-            model.addAttribute("itemList", itemList);
-            model.addAttribute("product", product);
+            model.addAttribute("itemList" ,itemList);
+            model.addAttribute("product",product);
         }
         return "catalog/product";
     }
 
     @GetMapping("/viewItem")
-    public String viewItem(String itemId, Model model)
-    {
+    public String viewItem(String itemId , Model model) {
         Item item = catalogService.getItem(itemId);
         Product product = item.getProduct();
-        model.addAttribute("item", item);
-        model.addAttribute("product", product);
+        model.addAttribute("item" ,item);
+        model.addAttribute("product",product);
         return "catalog/Item";
     }
 

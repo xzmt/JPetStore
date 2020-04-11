@@ -2,8 +2,10 @@ package org.csu.mypetstore.controller;
 
 import org.csu.mypetstore.domain.Account;
 import org.csu.mypetstore.domain.Cart;
+import org.csu.mypetstore.domain.CartDb;
 import org.csu.mypetstore.domain.Order;
 import org.csu.mypetstore.service.OrderService;
+import org.csu.mypetstore.service.StockService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.Banner;
 import org.springframework.stereotype.Controller;
@@ -19,10 +21,17 @@ import java.util.List;
 
 @Controller
 @RequestMapping("/order")
-@SessionAttributes(value = {"account" ,"cartList","cart","order"})
+@SessionAttributes(value = {"account" ,"cartList","cart","order","cartListSize"})
 public class OrderController {
     @Autowired
     public OrderService orderService;
+    @Autowired
+    public StockService stockService;
+
+    @Override
+    public int hashCode() {
+        return super.hashCode();
+    }
 
     @GetMapping("/newOrder")
     public String newOrder(Model model)
@@ -33,6 +42,14 @@ public class OrderController {
 
         model.addAttribute("order",order);
         model.addAttribute("cart",null);
+
+        //库存减少
+        for(int i =0; i<order.getLineItems().size();i++){
+            int a = stockService.getStockNumByItemId(order.getLineItems().get(i).getItemId()) - order.getLineItems().get(i).getQuantity();
+            stockService.updateStockNum(order.getLineItems().get(i).getItemId(),a);
+        }
+
+
         return "order/viewOrder";
     }
 
@@ -60,6 +77,8 @@ public class OrderController {
     @GetMapping("/viewNewOrder")
     public String viewNewOrder(Model model)
     {
+        String falsemsg = "";
+
         Order order=new Order();
         Account account= (Account) model.getAttribute("account");
         Cart cart = (Cart) model.getAttribute("cart");
@@ -76,7 +95,34 @@ public class OrderController {
 
         model.addAttribute("cardtype",CARD_TYPE_LIST);
 
-        return "order/newOrderForm";
+        boolean ifbuy = true;
+
+        List<CartDb> cartList = (List<CartDb>)model.getAttribute("cartList");
+        //判断库存
+        for(int i =0; i<cartList.size();i++){
+            System.out.println(cartList.get(i).getQuantity());
+            System.out.println("我们检测了！");
+            int b = stockService.getStockNumByItemId(cartList.get(i).getItemId()) - cartList.get(i).getQuantity();
+            if(b<0)
+            {
+                ifbuy = false;
+            }
+        }
+        if(ifbuy) {
+            return "order/newOrderForm";
+        }
+        else
+        {
+        for(int i =0; i<cartList.size();i++){
+            int b = stockService.getStockNumByItemId(cartList.get(i).getItemId()) - cartList.get(i).getQuantity();
+            if(b<0)
+            {
+                falsemsg += cartList.get(i).getItemId()+"is not enough /n";
+            }
+        }
+        model.addAttribute("falsemsg",falsemsg);
+        return "cart/cart";
+    }
     }
 
     @PostMapping("/viewShippingForm")
