@@ -21,26 +21,31 @@ public class CommodityManagementService
     @Autowired
     ItemMapper itemMapper;
 
+    /*取得所有的category*/
     public List<Category> getAllCategory()
     {
         return categoryMapper.getCategoryList();
     }
 
+    /*插入一个category*/
     public void insertCategory(Category category)
     {
         categoryMapper.insertCategory(category);
     }
 
+    /*更改一个categories*/
     public void updateCategory(Category category)
     {
         categoryMapper.updateCategory(category);
     }
 
+    /*删除一个categories*/
     public void deleteCategory(String categoryId)
     {
         categoryMapper.deleteCategory(categoryId);
     }
 
+    /*好煞笔，不写了*/
     List<Product> getProductListByCategory(String categoryId)
     {
         return productMapper.getProductListByCategory(categoryId);
