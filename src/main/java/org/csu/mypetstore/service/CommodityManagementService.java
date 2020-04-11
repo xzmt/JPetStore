@@ -27,6 +27,12 @@ public class CommodityManagementService
         return categoryMapper.getCategoryList();
     }
 
+    /*取得一个categories*/
+    public Category getCategory(String categoryId)
+    {
+        return categoryMapper.getCategory(categoryId);
+    }
+
     /*插入一个category*/
     public void insertCategory(Category category)
     {
@@ -51,6 +57,11 @@ public class CommodityManagementService
         return productMapper.getProductListByCategory(categoryId);
     }
 
+    public Product getProduct(String productId)
+    {
+        return productMapper.getProduct(productId);
+    }
+
     public void insertProduct(Product product)
     {
         productMapper.insertProduct(product);
@@ -69,6 +80,11 @@ public class CommodityManagementService
     public List<Item> getItemListByProduct(String productId)
     {
         return itemMapper.getItemListByProduct(productId);
+    }
+
+    public Item getItem(String itemId)
+    {
+        return itemMapper.getItem(itemId);
     }
 
     public void insertItem(Item item)
