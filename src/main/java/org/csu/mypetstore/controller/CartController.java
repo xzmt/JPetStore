@@ -98,7 +98,7 @@ public class CartController {
         List<CartDb> cartDbList = (List<CartDb>) model.getAttribute("cartList");
         for (int i=0;i<cartDbList.size();i++)
         {
-            
+
             int quantity= Integer.parseInt(httpServletRequest.getParameter(cartDbList.get(i).getItemId()));
             cartService.updateCart(userId,cartDbList.get(i).getItemId(),quantity);
         }
