@@ -46,7 +46,8 @@
 <!--                        <fmt:formatNumber value="${item.listPrice}" pattern="$#,##0.00" />-->
                     </td>
                     <td>
-                        <a class="Button" th:href="@{'/cart/addItemToCart?workingItemId=' + ${item.itemId}}">Add to Cart</a>
+                        <a class="Button" th:if="${item.getStocknum() > 0}" th:href="@{'/cart/addItemToCart?workingItemId=' + ${item.itemId}}">Add to Cart</a>
+                        <a th:disabled="true" th:if="${item.getStocknum() ==  0}">stocknum is null</a>
                     </td>
                 </tr>
 

@@ -39,7 +39,7 @@
 
 <!--                    <c:forEach var="cartItem" items="${sessionScope.cartList}">-->
 
-
+                        <div th:text="${falsemsg}"></div>
                         <tr th:each="cartItem:${cartList}">
                             <td>
                                 <a th:href="@{'/catalog/viewItem?itemId=' + ${cartItem.itemId}}" th:text="${cartItem.itemId}">cartItem.itemId</a>

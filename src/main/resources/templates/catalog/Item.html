@@ -54,7 +54,8 @@
 
             <tr>
                 <td>
-                    <a th:href="@{'/cart/addItemToCart?workingItemId=' + ${item.itemId}}" class="Button">Add to Cart</a>
+                    <a th:if="${item.getStocknum() > 0}" th:href="@{'/cart/addItemToCart?workingItemId=' + ${item.itemId}}" class="Button">Add to Cart</a>
+                    <a th:if="${item.getStocknum() == 0}" th:disabled="true">stocknum is null</a>
                 </td>
             </tr>
         </table>
