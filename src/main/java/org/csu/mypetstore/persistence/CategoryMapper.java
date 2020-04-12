@@ -6,7 +6,15 @@ import org.springframework.stereotype.Repository;
 import java.util.List;
 
 @Repository
-public interface CategoryMapper {
+public interface CategoryMapper
+{
     Category getCategory(String categoryId);
+
     List<Category> getCategoryList();
+
+    void insertCategory(Category category);
+
+    void updateCategory(Category category);
+
+    void deleteCategory(String categoryId);
 }

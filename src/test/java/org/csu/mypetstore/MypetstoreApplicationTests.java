@@ -1,12 +1,15 @@
 package org.csu.mypetstore;
 
 import org.csu.mypetstore.domain.Category;
+import org.csu.mypetstore.domain.Item;
 import org.csu.mypetstore.domain.Product;
 import org.csu.mypetstore.service.CatalogService;
+import org.csu.mypetstore.service.CommodityManagementService;
 import org.junit.jupiter.api.Test;
 import org.mybatis.spring.annotation.MapperScan;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.web.util.pattern.PathPatternRouteMatcher;
 
 import java.util.List;
 
@@ -15,23 +18,17 @@ import java.util.List;
 class MypetstoreApplicationTests {
 
     @Autowired
-    CatalogService catalogService;
-    @Test
-    void contextLoads() {
-
-    }
+    CommodityManagementService service;
 
     @Test
-    void testCategory()
+    public void testCommodityManagementService()
     {
-        System.out.println(catalogService.getAllItem());
+        Item item = new Item();
+        item.setItemId("123");
+        item.setProductId("AV-CB-01");
+        item.setName("12345");
+        item.setStocknum(20);
+        item.setSupplierId(1);
+        service.deleteItem(item.getItemId());
     }
-
-    @Test
-    void testProduct()
-    {
-        List<Product> productList = catalogService.getProductListByCategory("BIRDS");
-        System.out.println(productList.size());
-    }
-
 }
