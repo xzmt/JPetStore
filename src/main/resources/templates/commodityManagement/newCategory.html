@@ -84,18 +84,26 @@
                     </div>
                 </div>
             </nav>
-            <div class="container">
-    <div class="row clearfix">
-        <div class="col-md-12 column">
-            <form role="form">
+        <div class="col-md-12 column" style="background-color: #FFFFFF">
+            <div class="section-body">
+            <div class="card">
+                <div class="card-header">
+                    <br> <br>
+                    <br> <br>
+                    <h4>添加Category</h4>
+                    <br> <br>
+                </div>
+                <div class="card-body">
+
+            <form role="form" action="/commodityManagement/insertCategory" method="post">
                 <div class="form-group">
-                    <label for="exampleInputEmail1">categoryId</label><input type="text" class="form-control" id="exampleInputEmail1" th:name="categoryId"/>
+                    <label for="exampleInputEmail1">categoryId</label><input type="text" class="form-control" id="exampleInputEmail1" name="categoryId"/>
                 </div>
                 <div class="form-group">
-                    <label for="exampleInputPassword1">Name</label><input type="text" class="form-control" id="exampleInputPassword1" th:name="name"/>
+                    <label for="exampleInputPassword1">Name</label><input type="text" class="form-control" id="exampleInputPassword1" name="name"/>
                 </div>
                 <div class="form-group">
-                    <label for="exampleInputdescription">description</label><input type="text" class="form-control" id="exampleInputdescription" th:name="description"/>
+                    <label for="exampleInputdescription">description</label><input type="text" class="form-control" id="exampleInputdescription" name="description"/>
                 </div>
 <!--                <div class="form-group">-->
 <!--                    <label for="exampleInputFile">File input</label><input type="file" id="exampleInputFile" />-->
@@ -108,9 +116,61 @@
 <!--                </div> -->
         <button type="submit" class="btn text-uppercase" data-blast="bgColor">Submit</button>
             </form>
+                </div>
+            </div>
+        </div>
+        </div>
         </div>
     </div>
 </div>
-        </div></div></div>
+            <script src="../js/jquery-2.2.3.min.js"></script>
+            <script src="../js/boost.js"></script>
+            <script src="../js/blast.min.js"></script>
+            <!--  light box js -->
+            <script src="../js/lightbox-plus-jquery.min.js">
+            </script>
+            <script>
+                // optional
+                $('#blogCarousel').carousel({
+                    interval: 5000
+                });
+            </script>
+            <!-- //light box js-->
+
+            <!--/ start-smoth-scrolling -->
+            <script src="../js/move-top.js"></script>
+            <script src="../js/easing.js"></script>
+            <script>
+                jQuery(document).ready(function($) {
+                    $(".scroll").click(function(event) {
+                        event.preventDefault();
+                        $('html,body').animate({
+                            scrollTop: $(this.hash).offset().top
+                        }, 900);
+                    });
+                });
+            </script>
+            <script>
+                $(document).ready(function() {
+                    /*
+                                            var defaults = {
+                                                  containerID: 'toTop', // fading element id
+                                                containerHoverID: 'toTopHover', // fading element hover id
+                                                scrollSpeed: 1200,
+                                                easingType: 'linear'
+                                             };
+                                            */
+
+                    $().UItoTop({
+                        easingType: 'easeOutQuart'
+                    });
+
+                });
+            </script>
+            <!--// end-smoth-scrolling -->
+
+            <!-- //js -->
+
+            <script src="../js/bootstrap.js"></script>
 </body>
 </html>

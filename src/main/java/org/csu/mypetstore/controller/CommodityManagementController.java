@@ -125,11 +125,10 @@ public class CommodityManagementController {
 
     //插入新的category
     @PostMapping("/insertCategory")
-    public String insertCategory(Model model)
+    public String insertCategory(Category category ,Model model)
     {
-        Category category = (Category)model.getAttribute("category");
         commodityManagementService.insertCategory(category);
-        return "";
+        return "commodityManagement/catagory";
     }
 
 
@@ -193,7 +192,7 @@ public class CommodityManagementController {
     @GetMapping("/enterNewCategory")
     public String enterNewCategory(Model model)
     {
-        return "";
+        return "commodityManagement/newCategory";
     }
 
 
