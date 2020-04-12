@@ -125,30 +125,30 @@ public class CommodityManagementController {
 
     //插入新的category
     @PostMapping("insertCategory")
-    public String insertCategory(Model model)
+    public String insertCategory(Category category,Model model)
     {
-        Category category = (Category)model.getAttribute("category");
         commodityManagementService.insertCategory(category);
+        model.addAttribute("categoryList" , commodityManagementService.getAllCategory());
         return "";
     }
 
 
     //插入新的product
     @PostMapping("/insertProduct")
-    public String insertProduct(Model model)
+    public String insertProduct(Product product,Model model)
     {
-        Product product = (Product)model.getAttribute("product");
         commodityManagementService.insertProduct(product);
+        model.addAttribute("productList", commodityManagementService.getProductListByCategory(product.getCategoryId()));
         return "";
     }
 
 
     //插入新的item
     @PostMapping("/insertItem")
-    public String insertItem(Model model)
+    public String insertItem(Item item,Model model)
     {
-        Item item = (Item)model.getAttribute("item");
         commodityManagementService.insertItem(item);
+        model.addAttribute("itemList", commodityManagementService.getItemListByProduct(item.getProductId()));
         return "";
     }
 
