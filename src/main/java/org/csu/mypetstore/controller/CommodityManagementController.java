@@ -189,4 +189,27 @@ public class CommodityManagementController {
         return "";
     }
 
+    //进入新增category页面
+    @GetMapping("/enterNewCategory")
+    public String enterNewCategory(Model model)
+    {
+        return "";
+    }
+
+
+    //进入新增product页面
+    @GetMapping("/enterNewProduct")
+    public String enterNewProduct(Model model)
+    {
+        return "";
+    }
+
+
+    //进入新增item页面
+    @GetMapping("/enterNewItem")
+    public String enterNewItem(Model model)
+    {
+        return "";
+    }
+
 }
