@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="zxx">
+<html lang="zxx" xmlns:th="http://www.thymeleaf.org">
 
 <head>
     <title>Home</title>
@@ -103,6 +103,16 @@
                                     <th>name</th>
                                     <th>descn</th>
                                     <th>Action</th>
+                                </tr>
+
+                                <tr th:each="category:${categories}">
+                                    <td th:text="">1</td>
+                                    <td>Irwansyah Saputra</td>
+                                    <td>2017-01-09</td>
+                                    <td><image src="../images/birds_icon.gif"/><font size="5" color="blue"> Birds</font></td>
+                                    <td class="log-in mt-md-4 mt-3"><a href="#" class="btn text-uppercase" data-blast="bgColor">Detail</a>
+                                        <a href="#" class="btn text-uppercase" data-blast="bgColor">Change</a>
+                                        <a href="#" class="btn text-uppercase" data-blast="bgColor">Delete</a></td>
                                 </tr>
                                 <tr>
                                     <td>1</td>
