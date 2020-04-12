@@ -10,6 +10,16 @@ import org.springframework.web.bind.annotation.SessionAttributes;
 @RequestMapping("/commodityManagement")
 @SessionAttributes(value = {"account" ,"cartList","cart","order","cartListSize"})
 public class CommodityManagementController {
-    
+
+    @GetMapping("/index")
+    public String index() {
+        return "commodityManagement/index";
+    }
+
+    @GetMapping("/category")
+    public String category()
+    {
+        return "commodityManagement/catagory";
+    }
 
 }
