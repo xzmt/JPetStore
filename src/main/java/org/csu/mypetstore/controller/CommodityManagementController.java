@@ -11,9 +11,26 @@ import org.springframework.web.bind.annotation.SessionAttributes;
 @SessionAttributes(value = {"account" ,"cartList","cart","order","cartListSize"})
 public class CommodityManagementController {
 
-    @GetMapping("/newAccountForm")
-    public String newAccountForm() {
-        return "account/newAccount";
+    @GetMapping("/index")
+    public String index() {
+        return "commodityManagement/index";
     }
 
+    @GetMapping("/category")
+    public String category()
+    {
+        return "commodityManagement/catagory";
+    }
+
+    @GetMapping("/product")
+    public String product()
+    {
+        return "commodityManagement/product";
+    }
+
+    @GetMapping("/item")
+    public String item()
+    {
+        return "commodityManagement/item";
+    }
 }
