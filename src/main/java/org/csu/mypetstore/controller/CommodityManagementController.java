@@ -15,5 +15,5 @@ public class CommodityManagementController {
     public String newAccountForm() {
         return "account/newAccount";
     }
-    
+
 }
