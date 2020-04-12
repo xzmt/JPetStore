@@ -9,6 +9,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.SessionAttributes;
 
@@ -24,6 +25,7 @@ public class CommodityManagementController {
     public String index() {
         return "commodityManagement/index";
     }
+
 
     //查看category列表
     @GetMapping("/category")
@@ -122,7 +124,7 @@ public class CommodityManagementController {
 
 
     //插入新的category
-    @GetMapping("insertCategory")
+    @PostMapping("insertCategory")
     public String insertCategory(Model model)
     {
         Category category = (Category)model.getAttribute("category");
@@ -132,7 +134,7 @@ public class CommodityManagementController {
 
 
     //插入新的product
-    @GetMapping("/insertProduct")
+    @PostMapping("/insertProduct")
     public String insertProduct(Model model)
     {
         Product product = (Product)model.getAttribute("product");
@@ -142,7 +144,7 @@ public class CommodityManagementController {
 
 
     //插入新的item
-    @GetMapping("/insertItem")
+    @PostMapping("/insertItem")
     public String insertItem(Model model)
     {
         Item item = (Item)model.getAttribute("item");
@@ -158,6 +160,32 @@ public class CommodityManagementController {
         //修改上架状态
         item.setStatus(" ");
         commodityManagementService.updateItem(item);
+        return "";
+    }
+
+
+    //进入更改指定category页面
+    @GetMapping("/enterCategory")
+    public String enterCategory(String categoryId,Model model)
+    {
+        model.addAttribute("category", commodityManagementService.getCategory(categoryId));
+        return "";
+    }
+
+    //进入更改指定product页面
+    @GetMapping("/enterProduct")
+    public String enterProduct(String productId,Model model)
+    {
+        model.addAttribute("product", commodityManagementService.getProduct(productId));
+        return "";
+    }
+
+
+    //进入更改指定item页面
+    @GetMapping("/enterItem")
+    public String enterItem(String itemId,Model model)
+    {
+        model.addAttribute("item", commodityManagementService.getItem(itemId));
         return "";
     }
 
