@@ -52,7 +52,7 @@ public class CommodityManagementService
     }
 
     /*好煞笔，不写了*/
-    List<Product> getProductListByCategory(String categoryId)
+    public List<Product> getProductListByCategory(String categoryId)
     {
         return productMapper.getProductListByCategory(categoryId);
     }
