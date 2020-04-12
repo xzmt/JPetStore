@@ -124,7 +124,7 @@ public class CommodityManagementController {
 
 
     //插入新的category
-    @PostMapping("insertCategory")
+    @PostMapping("/insertCategory")
     public String insertCategory(Model model)
     {
         Category category = (Category)model.getAttribute("category");
