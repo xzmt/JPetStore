@@ -25,7 +25,7 @@ public class CommodityManagementController {
     @GetMapping("/category")
     public String category(Model model)
     {
-        model.addAttribute("category" , commodityManagementService.getAllCategory());
+        model.addAttribute("categoryList" , commodityManagementService.getAllCategory());
         return "commodityManagement/catagory";
     }
 
