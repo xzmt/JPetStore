@@ -84,4 +84,34 @@
     from ITEM
   </select>
 
+  <insert id="insertItem" parameterType="Item">
+    INSERT INTO item
+        (itemid,productid,listprice,unitcost,supplier,status,attr1,attr2,attr3,attr4,attr5,stocknum)
+    VALUES
+        (#{itemId},#{productId},#{listPrice},#{unitCost},#{supplierId},#{status},#{attribute1},#{attribute2},#{attribute3},#{attribute4},#{attribute5},#{stocknum})
+  </insert>
+
+  <update id="updateItem" parameterType="Item">
+    UPDATE item
+    set
+        itemid=#{itemId},
+        productid=#{productId},
+        listprice=#{listPrice},
+        unitcost=#{unitCost},
+        supplier=#{supplierId},
+        status=#{status},
+        attr1=#{attribute1},
+        attr2=#{attribute2},
+        attr3=#{attribute3},
+        attr4=#{attribute4},
+        attr5=#{attribute5},
+        stocknum=#{stocknum}
+    WHERE itemid=#{itemId}
+  </update>
+
+  <delete id="deleteItem" parameterType="String">
+    DELETE FROM item
+    WHERE itemid=#{itemId}
+  </delete>
+
 </mapper>

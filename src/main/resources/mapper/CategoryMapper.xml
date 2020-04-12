@@ -23,4 +23,26 @@
     FROM CATEGORY
   </select>
 
+    <insert id="insertCategory" parameterType="Category">
+        INSERT INTO category
+        (catid,name,descn)
+        VALUES
+        (#{categoryId},#{name},#{description})
+    </insert>
+
+    <update id="updateCategory" parameterType="Category">
+        UPDATE category
+        SET
+        catid=#{categoryId},
+        name=#{name},
+        descn=#{description}
+        WHERE
+        catid=#{categoryId}
+    </update>
+
+    <delete id="deleteCategory" parameterType="String">
+        DELETE FROM category
+        WHERE catid=#{categoryId}
+    </delete>
+
 </mapper>

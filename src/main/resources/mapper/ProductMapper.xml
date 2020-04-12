@@ -40,4 +40,26 @@
         SELECT NAME from PRODUCT
     </select>
 
+  <insert id="insertProduct" parameterType="Product">
+    INSERT product
+    (productid,category,name,descn)
+    VALUES
+    (#{productId},#{categoryId},#{name},#{description})
+  </insert>
+
+  <update id="updateProduct" parameterType="Product">
+    UPDATE product
+    SET
+        productid=#{productId},
+        category=#{categoryId},
+        name=#{name},
+        descn=#{description}
+    WHERE productid=#{productId}
+  </update>
+
+  <delete id="deleteProduct" parameterType="String">
+    DELETE FROM product
+    WHERE productid=#{productId}
+  </delete>
+
 </mapper>
