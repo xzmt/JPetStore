@@ -42,6 +42,7 @@ public class CommodityManagementController {
     {
         if (categoryId != null) {
             model.addAttribute("productList", commodityManagementService.getProductListByCategory(categoryId));
+            model.addAttribute("categoryId",categoryId);
             return "commodityManagement/product";
         }
         else{
@@ -57,6 +58,7 @@ public class CommodityManagementController {
     {
         if (productId != null) {
             model.addAttribute("itemList", commodityManagementService.getItemListByProduct(productId));
+            model.addAttribute("productId",productId);
             return "commodityManagement/item";
         }
         else{
