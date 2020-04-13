@@ -92,7 +92,7 @@
                             <div class="card">
                                 <div class="card-header">
                                     <br><br><br><br>
-                                    <h4>Item <a style="float:right"  href="#myCarousel" data-blast="color">添加</a></h4>
+                                    <h4>Item <a style="float:right"  th:href="@{'/commodityManagement/enterNewItem?productId=' + ${productId}}" data-blast="color">添加</a></h4>
                                 </div>
                                 <div class="card-body">
                                     <div class="table-responsive">
@@ -114,7 +114,7 @@
                                                 <td class="log-in mt-md-4 mt-3">
                                                     <a  class="btn text-uppercase" th:href="@{'/catalog/viewItem?itemId=' + ${item.itemId}}" data-blast="bgColor">Detail</a>
                                                     <a  class="btn text-uppercase" data-blast="bgColor">Change</a>
-                                                    <a  class="btn text-uppercase" data-blast="bgColor">Delete</a></td>
+                                                    <a  class="btn text-uppercase" th:href="@{'/commodityManagement/deleteItem?itemId=' + ${item.getItemId()}}"data-blast="bgColor">Delete</a></td>
                                             </tr>
 
                                         </table>

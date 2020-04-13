@@ -94,16 +94,54 @@
                             <br> <br>
                         </div>
                         <div class="card-body">
-
-                            <form role="form">
+                            <form role="form" action="/commodityManagement/insertItem" method="post">
                                 <div class="form-group">
-                                    <label for="exampleInputEmail1">categoryId</label><input type="text" class="form-control" id="exampleInputEmail1" th:name="categoryId"/>
+                                    <label for="exampleInputEmail1">itemId</label><input type="text" class="form-control" id="exampleInputEmail1" name="itemId"/>
                                 </div>
                                 <div class="form-group">
-                                    <label for="exampleInputPassword1">Name</label><input type="text" class="form-control" id="exampleInputPassword1" th:name="name"/>
+                                    <label for="exampleInputPassword1">productId</label><input type="text" class="form-control" id="exampleInputPassword1" name="productId" th:value="${productId}" readonly="true"/>
                                 </div>
                                 <div class="form-group">
-                                    <label for="exampleInputdescription">description</label><input type="text" class="form-control" id="exampleInputdescription" th:name="description"/>
+                                    <label for="exampleInputlistPrice">listPrice</label><input type="text" class="form-control" id="exampleInputlistPrice" name="listPrice"/>
+                                </div>
+                                <div class="form-group">
+                                    <label for="exampleInputunitCost">unitCost</label><input type="text" class="form-control" id="exampleInputunitCost" name="unitCost"/>
+                                </div>
+                                <div class="form-group">
+                                    <label for="exampleInputsupplierId">supplierId</label><input type="text" class="form-control" id="exampleInputsupplierId" name="supplierId"/>
+                                </div>
+                                <div class="form-group">
+                                    <label for="exampleInputstatus">status</label><input type="text" class="form-control" id="exampleInputstatus" name="status"/>
+                                </div>
+                                <div class="form-group">
+                                    <label for="exampleInputattribute1">attribute1</label><input type="text" class="form-control" id="exampleInputattribute1" name="attribute1"/>
+                                </div>
+                                <div class="form-group">
+                                    <label for="exampleInputattribute2">attribute2</label><input type="text" class="form-control" id="exampleInputattribute2" name="attribute2"/>
+                                </div>
+                                <div class="form-group">
+                                    <label for="exampleInputattribute3">attribute3</label><input type="text" class="form-control" id="exampleInputattribute3" name="attribute3"/>
+                                </div>
+                                <div class="form-group">
+                                    <label for="exampleInputattribute4">attribute4</label><input type="text" class="form-control" id="exampleInputattribute4" name="attribute4"/>
+                                </div>
+                                <div class="form-group">
+                                    <label for="exampleInputattribute5">attribute5</label><input type="text" class="form-control" id="exampleInputattribute5" name="attribute5"/>
+                                </div>
+                                <div class="form-group">
+                                    <label for="exampleInputproduct">product</label><input type="text" class="form-control" id="exampleInputproduct" name="product"/>
+                                </div>
+                                <div class="form-group">
+                                    <label for="exampleInputquantity">quantity</label><input type="text" class="form-control" id="exampleInputquantity" name="quantity"/>
+                                </div>
+                                <div class="form-group">
+                                    <label for="exampleInputname">name</label><input type="text" class="form-control" id="exampleInputname" name="name"/>
+                                </div>
+                                <div class="form-group">
+                                    <label for="exampleInputdescn">descn</label><input type="text" class="form-control" id="exampleInputdescn" name="descn"/>
+                                </div>
+                                <div class="form-group">
+                                    <label for="exampleInputstocknum">stocknum</label><input type="text" class="form-control" id="exampleInputstocknum" name="stocknum"/>
                                 </div>
                                 <!--                <div class="form-group">-->
                                 <!--                    <label for="exampleInputFile">File input</label><input type="file" id="exampleInputFile" />-->

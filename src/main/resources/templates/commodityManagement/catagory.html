@@ -111,7 +111,7 @@
                                     <td class="log-in mt-md-4 mt-3" >
                                         <a class="btn text-uppercase" th:href="@{'/commodityManagement/product?categoryId=' + ${category.getCategoryId()}}" data-blast="bgColor">Detail</a>
                                         <a class="btn text-uppercase" data-blast="bgColor">Change</a>
-                                        <a class="btn text-uppercase" data-blast="bgColor">Delete</a></td>
+                                        <a class="btn text-uppercase" th:href="@{'/commodityManagement/deleteCategory?categoryId=' + ${category.getCategoryId()}}" data-blast="bgColor">Delete</a></td>
                                 </tr>
                             </table>
                         </div>
