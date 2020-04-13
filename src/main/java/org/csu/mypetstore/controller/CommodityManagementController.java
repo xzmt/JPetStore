@@ -101,7 +101,8 @@ public class CommodityManagementController {
     public String deleteCategory(String categoryId,Model model)
     {
         commodityManagementService.deleteCategory(categoryId);
-        return "";
+        model.addAttribute("categoryList" , commodityManagementService.getAllCategory());
+        return "commodityManagement/catagory";
     }
 
 
@@ -112,7 +113,7 @@ public class CommodityManagementController {
         Product product = commodityManagementService.getProduct(productId);
         commodityManagementService.deleteProduct(productId);
         model.addAttribute("productList",commodityManagementService.getProductListByCategory(product.getCategoryId()));
-        return "";
+        return "commodityManagement/product";
     }
 
 
@@ -123,7 +124,7 @@ public class CommodityManagementController {
         Item item = commodityManagementService.getItem(itemId);
         commodityManagementService.deleteItem(itemId);
         model.addAttribute("productList",commodityManagementService.getItemListByProduct(item.getProductId()));
-        return "";
+        return "commodityManagement/item";
     }
 
 
@@ -133,7 +134,7 @@ public class CommodityManagementController {
     {
         commodityManagementService.insertCategory(category);
         model.addAttribute("categoryList" , commodityManagementService.getAllCategory());
-        return "";
+        return "commodityManagement/catagory";
     }
 
 
@@ -143,7 +144,7 @@ public class CommodityManagementController {
     {
         commodityManagementService.insertProduct(product);
         model.addAttribute("productList", commodityManagementService.getProductListByCategory(product.getCategoryId()));
-        return "";
+        return "commodityManagement/product";
     }
 
 
@@ -153,7 +154,7 @@ public class CommodityManagementController {
     {
         commodityManagementService.insertItem(item);
         model.addAttribute("itemList", commodityManagementService.getItemListByProduct(item.getProductId()));
-        return "";
+        return "commodityManagement/item";
     }
 
     //上架新的item
@@ -197,23 +198,25 @@ public class CommodityManagementController {
     @GetMapping("/enterNewCategory")
     public String enterNewCategory(Model model)
     {
-        return "";
+        return "commodityManagement/newCategory";
     }
 
 
     //进入新增product页面
     @GetMapping("/enterNewProduct")
-    public String enterNewProduct(Model model)
+    public String enterNewProduct(String categoryId,Model model)
     {
-        return "";
+        model.addAttribute("categoryId",categoryId);
+        return "commodityManagement/newProduct";
     }
 
 
     //进入新增item页面
     @GetMapping("/enterNewItem")
-    public String enterNewItem(Model model)
+    public String enterNewItem(String productId ,Model model)
     {
-        return "";
+        model.addAttribute("productId",productId);
+        return "commodityManagement/newItem";
     }
 
 }
