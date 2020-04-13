@@ -109,7 +109,9 @@ public class CommodityManagementController {
     @GetMapping("/deleteProduct")
     public String deleteProduct(String productId,Model model)
     {
+        Product product = commodityManagementService.getProduct(productId);
         commodityManagementService.deleteProduct(productId);
+        model.addAttribute("productList",commodityManagementService.getProductListByCategory(product.getCategoryId()));
         return "";
     }
 
@@ -118,7 +120,9 @@ public class CommodityManagementController {
     @GetMapping("/deleteItem")
     public String deleteItem(String itemId,Model model)
     {
+        Item item = commodityManagementService.getItem(itemId);
         commodityManagementService.deleteItem(itemId);
+        model.addAttribute("productList",commodityManagementService.getItemListByProduct(item.getProductId()));
         return "";
     }
 
