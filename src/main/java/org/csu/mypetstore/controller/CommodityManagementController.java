@@ -59,6 +59,10 @@ public class CommodityManagementController {
         if (productId != null) {
             model.addAttribute("itemList", commodityManagementService.getItemListByProduct(productId));
             model.addAttribute("productId",productId);
+            for(int i = 0 ;i < commodityManagementService.getItemListByProduct(productId).size();i++)
+            {
+                System.out.println(commodityManagementService.getItemListByProduct(productId).get(i).getProductId());
+            }
             return "commodityManagement/item";
         }
         else{
@@ -70,33 +74,31 @@ public class CommodityManagementController {
 
     //更新指定category
     @PostMapping("/updateCategory")
-    public String updateCategory(Model model)
+    public String updateCategory(Category category ,Model model)
     {
-        Category category = (Category)model.getAttribute("category");
         commodityManagementService.updateCategory(category);
-        return "";
+        model.addAttribute("categoryList" , commodityManagementService.getAllCategory());
+        return "commodityManagement/catagory";
     }
 
 
     //更新指定product
     @PostMapping("/updateProduct")
-    public String updateProduct(Model model)
+    public String updateProduct(Product product,Model model)
     {
-        Product product = (Product)model.getAttribute("product");
         commodityManagementService.updateProduct(product);
         model.addAttribute("productList",commodityManagementService.getProductListByCategory(product.getCategoryId()));
-        return "";
+        return "commodityManagement/product";
     }
 
 
     //更新指定item
     @PostMapping("/updateItem")
-    public String updateItem(Model model)
+    public String updateItem(Item item,Model model)
     {
-        Item item = (Item)model.getAttribute("item");
         commodityManagementService.updateItem(item);
         model.addAttribute("itemList",commodityManagementService.getItemListByProduct(item.getProductId()));
-        return "";
+        return "commodityManagement/item";
     }
 
 
