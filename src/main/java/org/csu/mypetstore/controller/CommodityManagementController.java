@@ -69,7 +69,7 @@ public class CommodityManagementController {
 
 
     //更新指定category
-    @GetMapping("/updateCategory")
+    @PostMapping("/updateCategory")
     public String updateCategory(Model model)
     {
         Category category = (Category)model.getAttribute("category");
@@ -79,21 +79,23 @@ public class CommodityManagementController {
 
 
     //更新指定product
-    @GetMapping("/updateProduct")
+    @PostMapping("/updateProduct")
     public String updateProduct(Model model)
     {
         Product product = (Product)model.getAttribute("product");
         commodityManagementService.updateProduct(product);
+        model.addAttribute("productList",commodityManagementService.getProductListByCategory(product.getCategoryId()));
         return "";
     }
 
 
     //更新指定item
-    @GetMapping("/updateItem")
+    @PostMapping("/updateItem")
     public String updateItem(Model model)
     {
         Item item = (Item)model.getAttribute("item");
         commodityManagementService.updateItem(item);
+        model.addAttribute("itemList",commodityManagementService.getItemListByProduct(item.getProductId()));
         return "";
     }
 
@@ -125,7 +127,7 @@ public class CommodityManagementController {
     {
         Item item = commodityManagementService.getItem(itemId);
         commodityManagementService.deleteItem(itemId);
-        model.addAttribute("productList",commodityManagementService.getItemListByProduct(item.getProductId()));
+        model.addAttribute("itemList",commodityManagementService.getItemListByProduct(item.getProductId()));
         return "commodityManagement/item";
     }
 
