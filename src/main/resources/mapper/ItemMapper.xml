@@ -49,7 +49,7 @@
     from ITEM I, INVENTORY V, PRODUCT P
     where P.PRODUCTID = I.PRODUCTID
       and I.ITEMID = V.ITEMID
-      and I.ITEMID = #{value}
+      and I.ITEMID = #{productId}
   </select>
 
     <select id="getInventoryQuantity" parameterType="string" resultType="int">
