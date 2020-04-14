@@ -176,7 +176,7 @@ public class CommodityManagementController {
     public String enterCategory(String categoryId,Model model)
     {
         model.addAttribute("category", commodityManagementService.getCategory(categoryId));
-        return "";
+        return "commodityManagement/changeCategory";
     }
 
     //进入更改指定product页面
@@ -184,7 +184,7 @@ public class CommodityManagementController {
     public String enterProduct(String productId,Model model)
     {
         model.addAttribute("product", commodityManagementService.getProduct(productId));
-        return "";
+        return "commodityManagement/changeProduct";
     }
 
 
@@ -193,7 +193,7 @@ public class CommodityManagementController {
     public String enterItem(String itemId,Model model)
     {
         model.addAttribute("item", commodityManagementService.getItem(itemId));
-        return "";
+        return "commodityManagement/changeItem";
     }
 
     //进入新增category页面
