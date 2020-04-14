@@ -74,6 +74,7 @@ public class CommodityManagementController {
     {
         Category category = (Category)model.getAttribute("category");
         commodityManagementService.updateCategory(category);
+        model.addAttribute("categoryList" , commodityManagementService.getAllCategory());
         return "";
     }
 
