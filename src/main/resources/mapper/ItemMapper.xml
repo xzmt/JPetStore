@@ -12,10 +12,10 @@
       LISTPRICE,
       UNITCOST,
       SUPPLIER AS supplierId,
-      I.PRODUCTID AS "product.productId",
-      NAME AS "product.name",
-      DESCN AS "product.description",
-      CATEGORY AS "product.categoryId",
+      I.PRODUCTID AS "productId",
+      NAME AS "name",
+      DESCN AS "description",
+      CATEGORY AS "categoryId",
       STATUS,
       ATTR1 AS attribute1,
       ATTR2 AS attribute2,
@@ -25,7 +25,7 @@
       I.STOCKNUM
     FROM ITEM I, PRODUCT P
     WHERE P.PRODUCTID = I.PRODUCTID
-    AND I.PRODUCTID = #{value}
+    AND I.PRODUCTID = #{productId}
   </select>
 
     <select id="getItem" parameterType="string" resultType="Item">
@@ -34,10 +34,10 @@
       LISTPRICE,
       UNITCOST,
       SUPPLIER AS supplierId,
-      I.PRODUCTID AS "product.productId",
-      NAME AS "product.name",
-      DESCN AS "product.description",
-      CATEGORY AS "product.categoryId",
+      I.PRODUCTID AS "productId",
+      NAME AS "name",
+      DESCN AS "description",
+      CATEGORY AS "categoryId",
       STATUS,
       ATTR1 AS attribute1,
       ATTR2 AS attribute2,

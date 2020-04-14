@@ -29,6 +29,6 @@ class MypetstoreApplicationTests {
         item.setName("12345");
         item.setStocknum(20);
         item.setSupplierId(1);
-        service.deleteItem(item.getItemId());
+        System.out.println(service.getItemListByProduct("FL-DSH-01").get(0).getProductId());;
     }
 }
