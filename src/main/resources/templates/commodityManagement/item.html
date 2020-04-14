@@ -108,13 +108,14 @@
 
                                             <tr th:each="item:${itemList}">
                                                 <td th:text="${item.getItemId()}">1</td>
+                                                <td th:text="${item.getProductId()}">55</td>
                                                 <td th:text="${item.getListPrice()}">1</td>
                                                 <td th:text="${item.getAttribute1()}">Irwansyah Saputra</td>
                                                 <td th:text="${item.getStocknum()}">2017-01-09</td>
                                                 <td class="log-in mt-md-4 mt-3">
                                                     <a  class="btn text-uppercase" th:href="@{'/catalog/viewItem?itemId=' + ${item.itemId}}" data-blast="bgColor">Detail</a>
-                                                    <a  class="btn text-uppercase" data-blast="bgColor">Change</a>
-                                                    <a  class="btn text-uppercase" th:href="@{'/commodityManagement/deleteItem?itemId=' + ${item.getItemId()}}"data-blast="bgColor">Delete</a></td>
+                                                    <a  class="btn text-uppercase" th:href="@{'/commodityManagement/enterItem?itemId=' + ${item.getItemId()}}" data-blast="bgColor">Change</a>
+                                                    <a  class="btn text-uppercase" th:href="@{'/commodityManagement/deleteItem?itemId=' + ${item.getItemId()}}" data-blast="bgColor">Delete</a></td>
                                             </tr>
 
                                         </table>
