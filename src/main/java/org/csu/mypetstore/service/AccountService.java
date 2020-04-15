@@ -6,6 +6,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.util.List;
+
 @Service
 public class AccountService {
 
@@ -38,6 +40,34 @@ public class AccountService {
         if (account.getPassword() != null && account.getPassword().length() > 0) {
             accountMapper.updateSignon(account);
         }
+    }
+
+    public List<Account> getAllAccount()
+    {
+        return accountMapper.getAllAccount();
+    }
+
+    @Transactional
+    public void passwordReset(String username)
+    {
+        Account account = getAccount(username);
+        if(account!=null)
+        {
+            account.setPassword("000000");
+            updateAccount(account);
+        }
+        else
+        {
+            System.out.println("account is null");
+        }
+    }
+
+    @Transactional
+    public void deleteAccount(String username)
+    {
+        accountMapper.deleteAccount(username);
+        accountMapper.deleteProfile(username);
+        accountMapper.deleteSignon(username);
     }
 
 }
