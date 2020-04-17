@@ -2,6 +2,7 @@ package org.csu.mypetstore.controller;
 
 import cn.hutool.captcha.CaptchaUtil;
 import cn.hutool.captcha.CircleCaptcha;
+import cn.hutool.crypto.Mode;
 import org.csu.mypetstore.domain.Account;
 import org.csu.mypetstore.service.AccountService;
 import org.csu.mypetstore.service.CatalogService;
@@ -238,6 +239,31 @@ public class AccountController {
             // TODO Auto-generated catch block
             e.printStackTrace();
         }
+    }
+
+
+    //返回所有Account列表
+    @GetMapping("/getAllAccount")
+    public String getAllAccount(Model model)
+    {
+        model.addAttribute("accountList" , accountService.getAllAccount());
+        return "";
+    }
+
+    //进入指定Account信息显示页面
+    @GetMapping("/enterAccount")
+    public String enterAccount(String username,Model model)
+    {
+        model.addAttribute("account", accountService.getAccount(username));
+        return "";
+    }
+
+    //更新指定Account
+    @PostMapping("/updateAccount")
+    public String updateAccount(Account account,Model model)
+    {
+        accountService.updateAccount(account);
+        return "";
     }
 
 }
