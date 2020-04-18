@@ -12,7 +12,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.SessionAttributes;
 
 @Controller
-@RequestMapping("/commodityManagement")
+@RequestMapping("/accountManagement")
 @SessionAttributes(value = {"account" ,"cartList","cart","order","cartListSize"})
 public class AccountManagementController {
 
@@ -24,7 +24,7 @@ public class AccountManagementController {
     public String getAllAccount(Model model)
     {
         model.addAttribute("accountList" , accountService.getAllAccount());
-        return "";
+        return "accountManagerment/index";
     }
 
     //进入指定Account信息显示页面
@@ -32,7 +32,7 @@ public class AccountManagementController {
     public String enterAccount(String username,Model model)
     {
         model.addAttribute("account", accountService.getAccount(username));
-        return "";
+        return "accountManagerment/changeAccount";
     }
 
     //更新指定Account
@@ -40,6 +40,7 @@ public class AccountManagementController {
     public String updateAccount(Account account, Model model)
     {
         accountService.updateAccount(account);
-        return "";
+        model.addAttribute("accountList" , accountService.getAllAccount());
+        return "accountManagerment/index";
     }
 }
