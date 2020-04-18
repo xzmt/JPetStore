@@ -40,6 +40,7 @@ public class AccountManagementController {
     public String updateAccount(Account account, Model model)
     {
         accountService.updateAccount(account);
+        model.addAttribute("accountList" , accountService.getAllAccount());
         return "";
     }
 }
