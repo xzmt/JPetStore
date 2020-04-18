@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="zxx" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <title>Home</title>
+    <!-- Meta tag Keywords -->
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta charset="UTF-8" />
+    <meta name="keywords" content="" />
+    <script>
+        addEventListener("load", function() {
+            setTimeout(hideURLbar, 0);
+        }, false);
+
+        function hideURLbar() {
+            window.scrollTo(0, 1);
+        }
+    </script>
+    <!-- //Meta tag Keywords -->
+
+    <!-- Custom-Files -->
+    <link rel="stylesheet" href="../css/bootstrap.css">
+    <!-- Bootstrap-Core-CSS -->
+
+    <!-- owl carousel -->
+    <link rel="stylesheet" href="../css/style.css" type="text/css" media="all" />
+    <link href="../css/blast.min.css" rel="stylesheet" />
+
+    <!-- Style-CSS -->
+    <!-- font-awesome-icons -->
+    <link href="../css/font-awesome.css" rel="stylesheet">
+    <!-- //font-awesome-icons -->
+    <!--lightbox -->
+    <link rel="stylesheet" href="../css/lightbox.css">
+    <!-- lightbox -->
+
+
+    <!-- Font-Awesome-Icons-CSS -->
+    <link href="http://fonts.googleapis.com/css?family=Oswald:300,400,500,600,700" rel="stylesheet">
+    <link href="http://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i,800" rel="stylesheet">
+
+</head>
+
+<body>
+<div class="main">
+    <div class="blast-box">
+        <div class="blast-frame">
+            <p>Color schemes</p>
+            <div class="blast-colors d-flex justify-content-center">
+                <div class="blast-color">#00a8e0</div>
+                <div class="blast-color">#ff322e</div>
+                <div class="blast-color">#ff9900</div>
+                <div class="blast-color">#34bf49</div>
+                <div class="blast-color">#666666</div>
+
+
+                <!-- you can add more colors here -->
+            </div>
+            <p class="blast-custom-colors">Select Color</p>
+            <input type="color" name="blastCustomColor" value="#cf2626">
+        </div>
+        <div class="blast-icon"><i class="fa fa-cog" aria-hidden="true"></i></div>
+
+    </div>
+    <div id="page">
+        <div id="home" class="banner" data-blast="bgColor">
+
+            <!--/banner-->
+            <nav class="navbar navbar-expand-lg mb-4 top-bar navbar-static-top sps sps--abv">
+                <div class="container">
+                    <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarCollapse1" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
+                        <span class="navbar-toggler-icon"><i class="fa fa-bars" aria-hidden="true"></i></span>
+                    </button>
+                    <a class="navbar-brand mx-auto" href="index.html" data-blast="color">Pet <span data-blast="color">Store</span></a>
+                    <div class="collapse navbar-collapse" id="navbarCollapse1">
+                        <ul class="navbar-nav ml-auto">
+                            <li class="nav-item active"> <a class="nav-link" href="#myCarousel" data-blast="color">Home <span class="sr-only">(current)</span></a> </li>
+                            <li class="nav-item"> <a class="nav-link" href="#services" data-blast="color">Services</a> </li>
+                            <li class="nav-item"> <a class="nav-link" href="#about" data-blast="color">About</a> </li>
+                            <li class="nav-item"> <a class="nav-link" href="#gallery" data-blast="color">Photos</a> </li>
+                            <li class="nav-item"> <a class="nav-link" href="#book" data-blast="color">Book Now</a> </li>
+                            <li class="nav-item"> <a class="nav-link" href="#contact" data-blast="color">Contact</a> </li>
+                        </ul>
+                    </div>
+                </div>
+            </nav>
+
+            <div class="col-12 col-md-6 col-lg-12">
+                <div class="section-body">
+                    <div class="row">
+                        <div class="col-12 col-md-6 col-lg-12">
+                            <div class="card">
+                                <div class="card-header">
+                                    <br><br><br><br>
+                                    <h4>Account
+                                </div>
+                                <div class="card-body">
+                                    <div class="table-responsive">
+                                        <table class="table table-bordered">
+                                            <tr>
+                                                <th>username</th>
+                                                <th>email</th>
+                                                <th>phoneNumber</th>
+                                                <th>action</th>
+                                            </tr>
+
+                                            <tr th:each="account:${accountList}">
+                                                <td th:text="${account.getUsername()}">1</td>
+                                                <td th:text="${account.getEmail()}">2017-01-09</td>
+                                                <td th:text="${account.getPhone()}"></td>
+                                                <td class="log-in mt-md-4 mt-3" >
+                                                    <a class="btn text-uppercase" th:href="@{'/accountManagement/enterAccount?username=' + ${account.getUsername()}}" data-blast="bgColor">Change</a>
+                                            </tr>
+                                        </table>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+
+
+        </div>
+    </div>
+</div>
+<script src="../js/jquery-2.2.3.min.js"></script>
+<script src="../js/boost.js"></script>
+<script src="../js/blast.min.js"></script>
+<!--  light box js -->
+<script src="../js/lightbox-plus-jquery.min.js">
+</script>
+<script>
+    // optional
+    $('#blogCarousel').carousel({
+        interval: 5000
+    });
+</script>
+<!-- //light box js-->
+
+<!--/ start-smoth-scrolling -->
+<script src="../js/move-top.js"></script>
+<script src="../js/easing.js"></script>
+<script>
+    jQuery(document).ready(function($) {
+        $(".scroll").click(function(event) {
+            event.preventDefault();
+            $('html,body').animate({
+                scrollTop: $(this.hash).offset().top
+            }, 900);
+        });
+    });
+</script>
+<script>
+    $(document).ready(function() {
+        /*
+                                var defaults = {
+                                      containerID: 'toTop', // fading element id
+                                    containerHoverID: 'toTopHover', // fading element hover id
+                                    scrollSpeed: 1200,
+                                    easingType: 'linear'
+                                 };
+                                */
+
+        $().UItoTop({
+            easingType: 'easeOutQuart'
+        });
+
+    });
+</script>
+<!--// end-smoth-scrolling -->
+
+<!-- //js -->
+
+<script src="../js/bootstrap.js"></script>
+</body>
+</html>
