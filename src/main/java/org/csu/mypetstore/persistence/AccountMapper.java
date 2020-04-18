@@ -3,6 +3,8 @@ package org.csu.mypetstore.persistence;
 import org.csu.mypetstore.domain.Account;
 import org.springframework.stereotype.Repository;
 
+import java.util.List;
+
 @Repository
 public interface AccountMapper {
 
@@ -21,4 +23,12 @@ public interface AccountMapper {
     void updateProfile(Account account);
 
     void updateSignon(Account account);
+
+    List<Account> getAllAccount();
+
+    void deleteAccount(String username);
+
+    void deleteSignon(String username);
+
+    void deleteProfile(String username);
 }
