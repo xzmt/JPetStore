@@ -1,16 +1,15 @@
 package org.csu.mypetstore;
 
-import org.csu.mypetstore.domain.Account;
-import org.csu.mypetstore.domain.Category;
-import org.csu.mypetstore.domain.Item;
-import org.csu.mypetstore.domain.Product;
+import org.csu.mypetstore.domain.*;
 import org.csu.mypetstore.service.AccountService;
 import org.csu.mypetstore.service.CatalogService;
 import org.csu.mypetstore.service.CommodityManagementService;
+import org.csu.mypetstore.service.OrderService;
 import org.junit.jupiter.api.Test;
 import org.mybatis.spring.annotation.MapperScan;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.core.OrderComparator;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.util.pattern.PathPatternRouteMatcher;
 
@@ -62,5 +61,20 @@ class MypetstoreApplicationTests {
 //        accountService.insertAccount(account);
 
         accountService.deleteAccount("123");
+    }
+
+    @Autowired
+    OrderService orderService;
+    @Test
+    public void testOrder()
+    {
+        List<Order> orders = orderService.getAllOrder();
+
+        for (Order order : orders)
+        {
+            System.out.println(order.getOrderId());
+        }
+
+        orderService.changeOrderStatus(1005,"p");
     }
 }

@@ -12,7 +12,7 @@ public class LineItem implements Serializable {
     private int quantity;
     private String itemId;
     private BigDecimal unitPrice;
-      private Item item;
+    private Item item;
     private BigDecimal total;
     private String name;
 
