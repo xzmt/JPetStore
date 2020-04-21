@@ -110,7 +110,7 @@ public class OrderService {
     {
         orderMapper.updateOrder(order);
         orderMapper.updateOrderStatus(order);
-    }
+    } 
 
     public void deleteOrder(int orderId)
     {
