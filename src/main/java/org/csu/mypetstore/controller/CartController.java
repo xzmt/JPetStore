@@ -147,7 +147,7 @@ public class CartController {
     public String getOrdersByUsername(String username,Model model)
     {
         model.addAttribute("orderList",orderService.getOrdersByUsername(username));
-        return "";
+        return "cart/myOrder";
     }
 
 }

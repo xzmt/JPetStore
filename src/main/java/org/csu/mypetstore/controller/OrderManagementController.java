@@ -1,5 +1,6 @@
 package org.csu.mypetstore.controller;
 
+import org.csu.mypetstore.domain.Account;
 import org.csu.mypetstore.domain.Order;
 import org.csu.mypetstore.service.OrderService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -24,7 +25,7 @@ public class OrderManagementController {
     public String enterOrder(Model model)
     {
         model.addAttribute("orderList" , orderService.getAllOrder());
-        return " ";
+        return "orderManagerment/index";
     }
 
 
@@ -33,7 +34,7 @@ public class OrderManagementController {
     public String enterOneOrder(int orderId,Model model)
     {
         model.addAttribute("order", orderService.getOrder(orderId));
-        return " ";
+        return "orderManagerment/changeOrder";
     }
 
 
@@ -44,7 +45,7 @@ public class OrderManagementController {
         orderService.updateOrder(order);
         model.addAttribute("orderList" , orderService.getAllOrder());
         model.addAttribute("order",orderService.getOrder(order.getOrderId()));
-        return " ";
+        return "orderManagerment/index";
     }
 
     //删除单一订单信息
@@ -53,28 +54,28 @@ public class OrderManagementController {
     {
         orderService.deleteOrder(orderId);
         model.addAttribute("orderList" , orderService.getAllOrder());
-        return " ";
+        return "orderManagerment/index";
     }
 
     //单一订单发货功能
-    @PostMapping("/postOrder")
+    @GetMapping("/postOrder")
     public String postOrder(int orderId, Model model)
     {
         orderService.changeOrderStatus(orderId,"Y");
         model.addAttribute("orderList" , orderService.getAllOrder());
         model.addAttribute("order",orderService.getOrder(orderId));
-        return " ";
+        return "orderManagerment/index";
     }
 
 
     //单一订单确认到达
-    @PostMapping("/surePostOrder")
+    @GetMapping("/surePostOrder")
     public String surePostOrder(int orderId, Model model)
     {
         orderService.changeOrderStatus(orderId,"S");
-        model.addAttribute("orderList" , orderService.getAllOrder());
+        model.addAttribute("orderList" ,  orderService.getOrdersByUsername(((Account)model.getAttribute("account")).getUsername()));
         model.addAttribute("order",orderService.getOrder(orderId));
-        return " ";
+        return "cart/myOrder";
     }
 
 }

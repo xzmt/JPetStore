@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="StyleSheet" href="../css/jpetstore.css" type="text/css" media="screen"/>
+</head>
+<body>
+<div th:replace="/common/top"></div>
+<div id="Content">
+    <div id="BackLink">
+        <a href="/catalog/view">Return to Main Menu</a>
+    </div>
+
+    <div id="Catalog">
+
+        <div id="Cart">
+
+            <h2>Shopping Cart</h2>
+            <form action="/cart/updateCartQuantities" method="Post">
+                <table>
+                    <tr>
+                        <th><b>username</b></th>
+                        <th><b>orderdate</b></th>
+                        <th><b>status</b></th>
+                        <th><b>action</b></th>
+                    </tr>
+
+                    <!--                    <c:if test="${sessionScope.cartListSize == 0}">-->
+                    <tr th:if="${orderList == 0}">
+                        <td colspan="8"><b>Your cart is empty.</b></td>
+                    </tr>
+                    <!--                    </c:if>-->
+
+                    <!--                    <c:forEach var="order" items="${sessionScope.cartList}">-->
+
+                    <tr th:each="order:${orderList}">
+                        <td th:text="${order.getUsername()}">1</td>
+                        <td th:text="${order.getOrderDate()}">2017-01-09</td>
+                        <td th:text="${order.getStatus()}"></td>
+                        <td class="log-in mt-md-4 mt-3" >
+                            <a class="btn text-uppercase" th:href="@{'/orderManagementController/surePostOrder?orderId=' + ${order.getOrderId()}}" >enter</a>
+                        </td>
+                    </tr>
+                    <!--                    </c:forEach>-->
+                </table>
+            </form>
+            <!--            <c:if test="${sessionScope.cartListSize > 0}">-->
+            <a  href="/cart/viewCart" class="Button">return to cart</a>
+            <!--            </c:if>-->
+        </div>
+
+        <div id="Separator">&nbsp;</div>
+    </div>
+</div>
+<div th:replace="/common/bottom"></div>
+
+</body>
+</html>

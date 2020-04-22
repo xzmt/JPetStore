@@ -16,7 +16,7 @@
     <div id="Catalog">
 
         <div id="Cart">
-
+            <a  th:href="@{'/cart/getOrdersByUsername?username=' + ${account.getUsername()}}" class="Button">my orderList</a>
             <h2>Shopping Cart</h2>
             <form action="/cart/updateCartQuantities" method="Post">
                 <table>
