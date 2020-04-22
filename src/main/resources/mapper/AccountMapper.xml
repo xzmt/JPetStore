@@ -60,6 +60,7 @@
 
     <update id="updateAccount" parameterType="Account">
     UPDATE ACCOUNT SET
+      USERID = #{username}
       EMAIL = #{email},
       FIRSTNAME = #{firstName},
       LASTNAME = #{lastName},
@@ -95,6 +96,7 @@
 
     <update id="updateProfile" parameterType="Account">
     UPDATE PROFILE SET
+      USERID = #{username}
       LANGPREF = #{languagePreference},
       FAVCATEGORY = #{favouriteCategoryId}
     WHERE USERID = #{username}
@@ -114,7 +116,9 @@
   </insert>
 
     <update id="updateSignon" parameterType="Account">
-    UPDATE SIGNON SET PASSWORD = #{password}
+    UPDATE SIGNON SET
+    PASSWORD = #{password}
+    USERNAME = #{username}
     WHERE USERNAME = #{username}
   </update>
 
