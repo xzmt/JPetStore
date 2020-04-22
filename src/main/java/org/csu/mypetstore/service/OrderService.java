@@ -25,6 +25,7 @@ public class OrderService {
     private LineItemMapper lineItemMapper;
     @Autowired
     private CartMapper cartMapper;
+
     public Order insertOrder(Order order)
     {
         int orderId = getNextId("ordernum");        //获取序列表sequence中名称为"ordernum"的id序列值
@@ -99,4 +100,27 @@ public class OrderService {
         return sequence.getNextId();
     }
 
+    /*获取所有的订单*/
+    public List<Order> getAllOrder()
+    {
+        return orderMapper.getAllOrder();
+    }
+
+    public void updateOrder(Order order)
+    {
+        orderMapper.updateOrder(order);
+        orderMapper.updateOrderStatus(order);
+    } 
+
+    public void deleteOrder(int orderId)
+    {
+        orderMapper.deleteOrder(orderId);
+    }
+
+    public void changeOrderStatus(int orderId,String statusName)
+    {
+        Order order = getOrder(orderId);
+        order.setStatus(statusName);
+        updateOrder(order);
+    }
 }

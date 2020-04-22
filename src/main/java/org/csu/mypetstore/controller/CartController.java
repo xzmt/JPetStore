@@ -6,6 +6,7 @@ import org.csu.mypetstore.domain.CartDb;
 import org.csu.mypetstore.service.AccountService;
 import org.csu.mypetstore.service.CartService;
 import org.csu.mypetstore.service.CatalogService;
+import org.csu.mypetstore.service.OrderService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -26,6 +27,8 @@ public class CartController {
     private AccountService accountService;
     @Autowired
     private CartService cartService;
+    @Autowired
+    private OrderService orderService;
     @GetMapping("/addItemToCart")
     public String addItemToCart(String workingItemId , Model model)
     {
@@ -138,4 +141,13 @@ public class CartController {
         session.setAttribute("cartList",cartListNew);
         session.setAttribute("cartListSize",cartListSize);
     }
+
+    //用户查看自己所有订单
+    @GetMapping("/getOrdersByUsername")
+    public String getOrdersByUsername(String username,Model model)
+    {
+        model.addAttribute("orderList",orderService.getOrdersByUsername(username));
+        return "";
+    }
+
 }
