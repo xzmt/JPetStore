@@ -8,6 +8,7 @@ import org.csu.mypetstore.persistence.ItemMapper;
 import org.csu.mypetstore.persistence.ProductMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.thymeleaf.processor.templateboundaries.ITemplateBoundariesProcessor;
 
 import java.util.List;
 
@@ -101,4 +102,9 @@ public class CommodityManagementService
     {
         itemMapper.deleteItem(itemId);
     }
+
+//    public List<Item> searchItem(String keywords)
+//    {
+//        return itemMapper.searchItem("%"+keywords.toLowerCase()+"%");
+//    }
 }

@@ -31,4 +31,6 @@ public interface AccountMapper {
     void deleteSignon(String username);
 
     void deleteProfile(String username);
+
+    List<Account> searchAccount(String keywords);
 }

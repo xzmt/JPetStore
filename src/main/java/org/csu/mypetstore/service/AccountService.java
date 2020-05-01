@@ -70,4 +70,8 @@ public class AccountService {
         accountMapper.deleteSignon(username);
     }
 
+    public List<Account> searchAccount(String keywords)
+    {
+        return accountMapper.searchAccount("%"+keywords.toLowerCase()+"%");
+    }
 }

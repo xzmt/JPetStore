@@ -22,4 +22,6 @@ public interface OrderMapper {
     void updateOrder(Order order);
 
     void updateOrderStatus(Order order);
+
+    List<Order> searchOrder(String keywords);
 }

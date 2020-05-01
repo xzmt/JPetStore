@@ -123,4 +123,9 @@ public class OrderService {
         order.setStatus(statusName);
         updateOrder(order);
     }
+
+    public List<Order> searchOrder(String keywords)
+    {
+        return orderMapper.searchOrder("%"+keywords.toLowerCase()+"%");
+    }
 }

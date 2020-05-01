@@ -77,4 +77,22 @@ class MypetstoreApplicationTests {
 
         orderService.changeOrderStatus(1005,"p");
     }
+
+    @Test
+    public void testSearch()
+    {
+        List<Account> accounts= accountService.searchAccount("a");
+        for (Account a :
+                accounts)
+        {
+            System.out.println(a.getUsername());
+        }
+
+        List<Order> orders = orderService.searchOrder("5");
+        for (Order o :
+                orders)
+        {
+            System.out.println(o.getOrderId());
+        }
+    }
 }
