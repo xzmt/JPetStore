@@ -78,6 +78,8 @@ class MypetstoreApplicationTests {
         orderService.changeOrderStatus(1005,"p");
     }
 
+    @Autowired
+    CatalogService catalogService;
     @Test
     public void testSearch()
     {
@@ -93,6 +95,13 @@ class MypetstoreApplicationTests {
                 orders)
         {
             System.out.println(o.getOrderId());
+        }
+
+        List<Item> items = catalogService.searchItem("1");
+        for (Item e :
+                items)
+        {
+            System.out.println(e.getItemId());
         }
     }
 }

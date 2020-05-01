@@ -29,4 +29,6 @@ public interface ItemMapper
     void updateItem(Item item);
 
     void deleteItem(String itemId);
+
+    List<Item> searchItem(String keywords);
 }

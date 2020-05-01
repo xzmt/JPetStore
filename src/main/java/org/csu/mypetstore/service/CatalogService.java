@@ -47,6 +47,11 @@ public class CatalogService
         return productMapper.searchProductList("%" + keyword.toLowerCase() + "%");
     }
 
+    public List<Product> searchProduct(String keyword)
+    {
+        return productMapper.searchProductList("%" + keyword.toLowerCase() + "%");
+    }
+
     public List<String> searchAllProductList(String username)
     {
         return productMapper.searchAllProductList(username);
@@ -72,4 +77,9 @@ public class CatalogService
     public int updateStockNum(String itemId,int stockNum){itemMapper.updateStockNum(itemId,stockNum); return 1;}
 
     public List<Item> getAllItem(){return itemMapper.getAllItem();}
+
+    public List<Item> searchItem(String keywords)
+    {
+        return itemMapper.searchItem("%"+keywords.toLowerCase()+"%");
+    }
 }
