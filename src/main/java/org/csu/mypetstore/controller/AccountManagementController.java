@@ -43,4 +43,12 @@ public class AccountManagementController {
         model.addAttribute("accountList" , accountService.getAllAccount());
         return "accountManagerment/index";
     }
+
+    //返回搜索结果
+    @GetMapping("/getSearchAccount")
+    public String getSearchAccount(String keywords,Model model)
+    {
+        model.addAttribute("accountList" , accountService.searchAccount(keywords));
+        return " ";
+    }
 }

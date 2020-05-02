@@ -78,4 +78,12 @@ public class OrderManagementController {
         return "cart/myOrder";
     }
 
+    //返回搜索结果
+    @GetMapping("/getSearchOrder")
+    public String getSearchOrder(String keywords,Model model)
+    {
+        model.addAttribute("orderList" , orderService.searchOrder(keywords));
+        return " ";
+    }
+
 }

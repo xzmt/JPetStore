@@ -4,6 +4,7 @@ package org.csu.mypetstore.controller;
 import org.csu.mypetstore.domain.Category;
 import org.csu.mypetstore.domain.Item;
 import org.csu.mypetstore.domain.Product;
+import org.csu.mypetstore.service.CatalogService;
 import org.csu.mypetstore.service.CommodityManagementService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -20,6 +21,9 @@ public class CommodityManagementController {
 
     @Autowired
     private CommodityManagementService commodityManagementService;
+
+    @Autowired
+    private CatalogService catalogService;
 
     @GetMapping("/index")
     public String index() {
@@ -223,6 +227,14 @@ public class CommodityManagementController {
     {
         model.addAttribute("productId",productId);
         return "commodityManagement/newItem";
+    }
+
+    //返回搜索结果
+    @GetMapping("/getSearchItem")
+    public String getSearchItem(String keywords,Model model)
+    {
+        model.addAttribute("categoryList" , catalogService.searchItem(keywords));
+        return " ";
     }
 
 }
