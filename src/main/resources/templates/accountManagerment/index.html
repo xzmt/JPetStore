@@ -92,7 +92,16 @@
                             <div class="card">
                                 <div class="card-header">
                                     <br><br><br><br>
-                                    <h4>Account
+                                    <h4>Account</h4>
+                                    <form action="/accountManagement/getSearchAccount" method="post">
+                                        <div class="form-group">
+                                            <label class="my-2">AccountID</label>
+                                            <input class="form-control" type="text" name="keywords" placeholder="" required="">
+                                        </div>
+                                        <div class="input-group1">
+                                            <input class="form-control" data-blast="bgColor" type="submit" value="Submit">
+                                        </div>
+                                    </form>
                                 </div>
                                 <div class="card-body">
                                     <div class="table-responsive">

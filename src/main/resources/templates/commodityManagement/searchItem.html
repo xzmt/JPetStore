@@ -92,7 +92,7 @@
                             <div class="card">
                                 <div class="card-header">
                                     <br><br><br><br>
-                                    <h4>Producct <a style="float:right" th:href="@{'/commodityManagement/enterNewProduct?categoryId=' + ${categoryId}}" data-blast="color">添加</a></h4>
+                                    <h4>Item  <a style="float:right"  href="/commodityManagement/category" data-blast="color">返回</a></h4>
                                     <form action="/commodityManagement/getSearchItem" method="post">
                                         <div class="form-group">
                                             <label class="my-2">ItemID</label>
@@ -107,21 +107,24 @@
                                     <div class="table-responsive">
                                         <table class="table table-bordered">
                                             <tr>
+                                                <th>itemid</th>
                                                 <th>productid</th>
-                                                <th>category</th>
-                                                <th>name</th>
-                                                <th>descn</th>
+                                                <th>listprice</th>
+                                                <th>arr1</th>
+                                                <th>stocknum</th>
                                                 <th>Action</th>
                                             </tr>
-                                            <tr th:each="product:${productList}">
-                                                <td th:text="${product.getProductId()}">1</td>
-                                                <td th:text="${product.getCategoryId()}">1</td>
-                                                <td th:text="${product.getName()}">Irwansyah Saputra</td>
-                                                <td th:utext="${product.getDescription()}">2017-01-09</td>
+
+                                            <tr th:each="item:${itemList}">
+                                                <td th:text="${item.getItemId()}">1</td>
+                                                <td th:text="${item.getProductId()}">55</td>
+                                                <td th:text="${item.getListPrice()}">1</td>
+                                                <td th:text="${item.getAttribute1()}">Irwansyah Saputra</td>
+                                                <td th:text="${item.getStocknum()}">2017-01-09</td>
                                                 <td class="log-in mt-md-4 mt-3">
-                                                    <a  class="btn text-uppercase" th:href="@{'/commodityManagement/item?productId=' + ${product.getProductId()}}" data-blast="bgColor">Detail</a>
-                                                    <a  class="btn text-uppercase" th:href="@{'/commodityManagement/enterProduct?productId=' + ${product.getProductId()}}" data-blast="bgColor">Change</a>
-                                                    <a  class="btn text-uppercase" th:href="@{'/commodityManagement/deleteProduct?productId=' + ${product.getProductId()}}" data-blast="bgColor">Delete</a></td>
+                                                    <a  class="btn text-uppercase" th:href="@{'/catalog/viewItem?itemId=' + ${item.itemId}}" data-blast="bgColor">Detail</a>
+                                                    <a  class="btn text-uppercase" th:href="@{'/commodityManagement/enterItem?itemId=' + ${item.getItemId()}}" data-blast="bgColor">Change</a>
+                                                    <a  class="btn text-uppercase" th:href="@{'/commodityManagement/deleteItem?itemId=' + ${item.getItemId()}}" data-blast="bgColor">Delete</a></td>
                                             </tr>
 
                                         </table>

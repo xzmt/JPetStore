@@ -129,7 +129,7 @@
 
     <select id="getAllAccount" resultType="Account">
     SELECT
-      IGNON.USERNAME,
+      SIGNON.USERNAME,
       ACCOUNT.EMAIL,
       ACCOUNT.FIRSTNAME,
       ACCOUNT.LASTNAME,
@@ -137,7 +137,7 @@
       ACCOUNT.ADDR1 AS address1,
       ACCOUNT.ADDR2 AS address2,
       ACCOUNT.CITY,
-      CCOUNT.STATE,
+      ACCOUNT.STATE,
       ACCOUNT.ZIP,
       ACCOUNT.COUNTRY,
       ACCOUNT.PHONE,

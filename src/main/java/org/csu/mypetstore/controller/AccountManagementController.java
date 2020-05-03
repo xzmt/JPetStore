@@ -45,10 +45,10 @@ public class AccountManagementController {
     }
 
     //返回搜索结果
-    @GetMapping("/getSearchAccount")
+    @PostMapping("/getSearchAccount")
     public String getSearchAccount(String keywords,Model model)
     {
         model.addAttribute("accountList" , accountService.searchAccount(keywords));
-        return " ";
+        return "accountManagerment/searchAccount";
     }
 }

@@ -173,9 +173,10 @@ public class CommodityManagementController {
     {
         Item item = commodityManagementService.getItem(itemId);
         //修改上架状态
-        item.setStatus(" ");
+        item.setStatus("Y");
         commodityManagementService.updateItem(item);
-        return "";
+        model.addAttribute("itemList",commodityManagementService.getItemListByProduct(item.getProductId()));
+        return "commodityManagement/item";
     }
 
 
@@ -230,11 +231,11 @@ public class CommodityManagementController {
     }
 
     //返回搜索结果
-    @GetMapping("/getSearchItem")
+    @PostMapping("/getSearchItem")
     public String getSearchItem(String keywords,Model model)
     {
-        model.addAttribute("categoryList" , catalogService.searchItem(keywords));
-        return " ";
+        model.addAttribute("itemList" , catalogService.searchItem(keywords));
+        return "commodityManagement/searchItem";
     }
 
 }
