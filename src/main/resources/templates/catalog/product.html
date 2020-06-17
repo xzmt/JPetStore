@@ -35,7 +35,7 @@
                     <td>
                         <a th:href="@{'/catalog/viewItem?itemId=' + ${item.itemId}}" th:text="${item.itemId}">item.itemId</a>
                     </td>
-                    <td th:text="${item.product.productId}">
+                    <td th:text="${item.productId}">
                         item.product.productId
                     </td>
                     <td th:text=" ${item.attribute1} + ${item.attribute2} + ${item.attribute3} +

@@ -91,6 +91,7 @@ public class CommodityManagementService
     public void insertItem(Item item)
     {
         itemMapper.insertItem(item);
+        itemMapper.insertInventory(item);
     }
 
     public void updateItem(Item item)

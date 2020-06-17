@@ -90,7 +90,12 @@
     VALUES
         (#{itemId},#{productId},#{listPrice},#{unitCost},#{supplierId},#{status},#{attribute1},#{attribute2},#{attribute3},#{attribute4},#{attribute5},#{stocknum})
   </insert>
-
+  <insert id="insertInventory" parameterType="Item">
+    INSERT INTO inventory
+        (itemid,qty)
+    VALUES
+        (#{itemId},10000)
+  </insert>
   <update id="updateItem" parameterType="Item">
     UPDATE item
     set

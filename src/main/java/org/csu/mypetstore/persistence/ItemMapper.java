@@ -30,5 +30,7 @@ public interface ItemMapper
 
     void deleteItem(String itemId);
 
+    void insertInventory(Item item);
+
     List<Item> searchItem(String keywords);
 }
