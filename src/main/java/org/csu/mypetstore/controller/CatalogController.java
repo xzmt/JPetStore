@@ -50,6 +50,11 @@ public class CatalogController {
     public String viewProduct(String productId , Model model) {
         if (productId != null) {
             List<Item>itemList = catalogService.getItemListByProduct(productId);
+            //修改
+            for(int i=0;i<itemList.size();i++){
+                if(!itemList.get(i).getStatus().equals("Y"))
+                    itemList.remove(i);
+            }
             Product product = catalogService.getProduct(productId);
             model.addAttribute("itemList" ,itemList);
             model.addAttribute("product",product);
